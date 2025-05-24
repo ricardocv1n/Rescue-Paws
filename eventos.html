@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eventos | Rescue Paws</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="estilos/eventos.css" />
+    <link rel="stylesheet" href="estilos/chatbot.css" />
+
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-paw logo-icon"></i>
+                <span class="logo-text">Rescue Paws</span>
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                     <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li class="nav-item"><a href="adopcion.html" class="nav-link"><i class="fas fa-heart"></i> Adoptar</a></li>
+                    <li class="nav-item"><a href="donar.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donar</a></li>
+                    <li class="nav-item"><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+                    <li class="nav-item"><a href="testimonios.html" class="nav-link"><i class="fas fa-comment"></i> Testimonios</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link active"><i class="fas fa-user-circle"></i> Acceso</a></li>
+                    <li class="nav-item nav-profile">
+                        <a href="perfil.html" class="nav-link active" aria-label="Perfil de usuario">
+                  <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600"alt="Perfil de usuario" class="profile-img">
+
+                        </a>
+                    </li>
+                </ul>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero section -->
+    <section class="events-hero">
+        <div class="container">
+            <h1><i class="fas fa-calendar-alt"></i> Nuestros Eventos</h1>
+            <p class="hero-subtitle">
+                Únete a nuestras actividades y ayuda a construir un futuro mejor para los animales necesitados
+            </p>
+        </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <main class="events-main">
+        <div class="container">
+            <section class="events-intro">
+                <h2><i class="fas fa-paw"></i> Próximos Eventos</h2>
+                <p>Participa en nuestras jornadas de adopción y eventos de recaudación. Cada evento nos ayuda a salvar más vidas.</p>
+            </section>
+
+            <div class="event-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="adoption">Adopción</button>
+                <button class="filter-btn" data-filter="fundraiser">Recaudación</button>
+                <button class="filter-btn" data-filter="workshop">Talleres</button>
+            </div>
+
+            <div class="events-container" id="events-container">
+                <!-- Eventos se cargarán dinámicamente -->
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Cargando eventos...</p>
+                </div>
+            </div>
+
+            <section class="past-events">
+                <h2><i class="fas fa-history"></i> Eventos Pasados</h2>
+                <p>Revive los momentos especiales que hemos compartido juntos</p>
+                
+                <div class="past-events-gallery" id="past-events-gallery">
+                    <!-- Galería se cargará dinámicamente -->
+                </div>
+                
+                <button class="btn btn-load-more" id="load-more-btn">Ver más eventos</button>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Rescue Paws</h4>
+                    <p>Rescatando, rehabilitando y reubicando mascotas necesitadas desde 2015.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-phone"></i> +52 55 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> hola@rescuepaws.org</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Ciudad de México</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 Rescue Paws. Todos los derechos reservados.</p>
+                <div class="footer-links">
+                    <a href="#">Términos</a> |
+                    <a href="#">Privacidad</a> |
+                    <a href="#">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+<div class="chatbot-container" role="region" aria-label="Chatbot de adopción PawFriend">
+        <button class="chatbot-toggle" aria-expanded="false" aria-label="Abrir chatbot de adopción">
+            <div class="chatbot-avatar">
+                <i class="fas fa-paw avatar-icon" aria-hidden="true"></i>
+                <div class="notification-badge hidden" aria-hidden="true">3</div>
+            </div>
+            <span class="sr-only">Chatbot de Adopción</span>
+        </button>
+        
+        <div class="chatbot-window hidden" role="dialog" aria-modal="true">
+            <div class="chatbot-header">
+                <div class="header-content">
+                    <i class="fas fa-paw header-avatar-icon" aria-hidden="true"></i>
+                    <div>
+                        <h2>PawFriend</h2>
+                        <p class="status"><span class="status-indicator" aria-hidden="true"></span> En línea</p>
+                    </div>
+                </div>
+                <button class="close-btn" aria-label="Cerrar chatbot">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" role="log" aria-live="polite">
+                </div>
+            
+            <div class="chatbot-input">
+                <form id="chatbot-form" class="chatbot-form" novalidate>
+                    <div class="input-group">
+                        <input type="text" id="user-input" placeholder="Escribe tu mensaje..." aria-label="Escribe tu mensaje" required>
+                        <button type="submit" class="send-btn" aria-label="Enviar mensaje">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="accessibility-options">
+                        <button type="button" id="voice-btn" class="accessibility-btn voice-btn" aria-label="Usar reconocimiento de voz">
+                            <i class="fas fa-microphone" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn text-size-btn" aria-label="Cambiar tamaño de texto">
+                            <i class="fas fa-text-height" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn high-contrast-btn" aria-label="Alternar alto contraste">
+                            <i class="fas fa-adjust" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn clear-btn" aria-label="Limpiar conversación">
+                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn restart-btn" aria-label="Reiniciar chatbot">
+                            <i class="fas fa-redo-alt" aria-hidden="true"></i>
+                        </button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/chatbot.js" defer></script>
+    <script src="scripts/eventos.js"></script>
+</body>
+</html>

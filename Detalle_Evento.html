@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detalles del Evento: Día de Parque y Adopción | Rescue Paws</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="estilos/Detalle_Evento.css" />
+    <script src="scripts/Detalle_Evento.js" defer></script>
+    <link rel="stylesheet" href="estilos/chatbot.css" />
+
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-paw logo-icon"></i>
+                <span class="logo-text">Rescue Paws</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Navegación principal">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li class="nav-item"><a href="adopcion.html" class="nav-link"><i class="fas fa-heart"></i> Adoptar</a></li>
+                    <li class="nav-item"><a href="donar.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donar</a></li>
+                    <li class="nav-item"><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+                    <li class="nav-item"><a href="testimonios.html" class="nav-link"><i class="fas fa-comment"></i> Testimonios</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link active"><i class="fas fa-user-circle"></i> Acceso</a></li>
+                    <li class="nav-item nav-profile">
+                        <a href="../perfil.html" class="nav-link" aria-label="Perfil de usuario">
+                            <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600"alt="Perfil de usuario" class="profile-img">
+                        </a>
+                    </li>
+                </ul>
+
+                <button class="mobile-menu-btn" aria-label="Abrir/cerrar menú móvil">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="event-hero" id="event-hero" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1543465137-fd5552382f64?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;">
+        <div class="event-hero-content">
+            <h1 id="event-name" class="event-title">Día de Parque y Adopción 'Patitas Felices'</h1>
+            <div class="event-meta">
+                <div class="event-date">
+                    <i class="fas fa-calendar-day"></i>
+                    <time datetime="2024-07-20 09:00-16:00" id="event-date">Sábado, 20 de Julio de 2024, 9:00 AM - 4:00 PM</time>
+                </div>
+                <div class="event-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="event-location">Parque Ronda del Sinú, Montería, Córdoba</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="event-container pagina-detalle-evento">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <a href="eventos.html">Eventos</a>
+                <span class="separator">/</span>
+                <span id="event-name-breadcrumb" aria-current="page">Día de Parque y Adopción 'Patitas Felices'</span>
+            </nav>
+
+            <section class="event-description">
+                <h2 id="event-short-description" class="section-subtitle">Disfruta de un día en el parque con nuestros animales rescatados.</h2>
+                <p id="event-long-description">Actividades para toda la familia y oportunidad de conocer a posibles compañeros peludos. Únete a Rescue Paws en el hermoso Parque Ronda del Sinú para nuestra jornada de adopción "Patitas Felices". Tendremos una variedad de perros y gatos rescatados, listos para encontrar un hogar amoroso. Habrá actividades para toda la familia, charlas sobre tenencia responsable de mascotas, y la oportunidad de conocer a estos maravillosos animales. ¡Tu presencia marca la diferencia!</p>
+            </section>
+
+            <section class="event-highlights">
+                <h2 class="section-title">Actividades Destacadas</h2>
+                <div class="activities-grid" id="event-activities">
+                    <div class="activity-card">
+                        <i class="fas fa-dog"></i>
+                        <h3>Conoce a las mascotas</h3>
+                        <p>Interactúa con perros y gatos adoptables.</p>
+                    </div>
+                    <div class="activity-card">
+                        <i class="fas fa-face-grin-beam"></i>
+                        <h3>Charlas educativas</h3>
+                        <p>Aprende sobre cuidado y tenencia responsable.</p>
+                    </div>
+                    <div class="activity-card">
+                        <i class="fas fa-heart"></i>
+                        <h3>Adopta un amigo</h3>
+                        <p>Oportunidad de conocer a tu futuro compañero peludo.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="event-details">
+                <h2 class="section-title">Detalles Adicionales</h2>
+                <div class="details-grid">
+                    <div class="detail-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Participantes</h3>
+                        <p id="event-participants">Abierto al público general, amantes de los animales y familias.</p>
+                    </div>
+                    <div class="detail-card">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h3>Costo</h3>
+                        <p id="event-cost">Entrada gratuita (donaciones voluntarias son bienvenidas).</p>
+                    </div>
+                    <div class="detail-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>Contacto</h3>
+                        <p id="event-contact">info@rescuepaws.org</p>
+                    </div>
+                    <div class="detail-card">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>Requisitos</h3>
+                        <p id="event-requirements">Documento de identidad para procesos de adopción.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="join-section">
+                <h2 class="section-title">¿Cómo Participar?</h2>
+                <p id="event-participation-info">¡Solo ven al Parque Ronda del Sinú en Montería el 20 de Julio entre las 9:00 AM y las 4:00 PM! No se requiere inscripción previa.</p>
+
+                <div class="action-buttons">
+                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Jornada+de+Adopcion+%27Patitas+Felices%27&dates=20240720T090000Z/20240720T160000Z&details=Jornada+de+adopcion+de+mascotas+en+Monteria.&location=Parque+Ronda+del+Sinu,+Monteria,+Cordoba" class="btn calendar-btn" id="calendar-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-calendar-plus"></i>
+                        Agregar a Calendario
+                    </a>
+                    <a href="donar.html" class="btn donate-btn">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        Donar para el Evento
+                    </a>
+                </div>
+            </section>
+
+            <section class="event-map">
+                <h2 class="section-title">Ubicación del Evento</h2>
+                <div class="map-container">
+                    <iframe id="event-map" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.905292419409!2d-75.88242132560341!3d8.75620949174094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e5a2f5f4b5f4b5f%3A0x8e5a2f5f4b5f4b5f!2sParque%20Ronda%20del%20Sin%C3%BA!5e0!3m2!1ses!2sco!4v1716508800000!5m2!1ses!2sco"></iframe>
+                </div>
+                <div class="map-actions">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Parque+Ronda+del+Sin%C3%BA,+Monter%C3%ADa,+C%C3%B3rdoba" class="btn directions-btn" id="directions-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-directions"></i>
+                        Cómo llegar
+                    </a>
+                </div>
+            </section>
+
+            <section class="event-gallery" id="event-gallery">
+                <h2 class="section-title">Galería de 'Patitas Felices'</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://unsplash.com/es/fotos/los-gatos-descansan-juntos-en-un-banco-del-parque-01_w3BIiSE0" alt="[Image of dog playing in park]">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="[Image of a cat looking at camera]">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1599818831031-13c571762143?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="[Image of people interacting with pets at an event]">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Rescue Paws</h4>
+                    <p>Rescatando, rehabilitando y reubicando mascotas necesitadas desde 2015.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="contact-list">
+                        <li class="contact-item"><i class="fas fa-phone"></i> <a href="tel:+525512345678">+52 55 1234 5678</a></li>
+                        <li class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:hola@rescuepaws.org">hola@rescuepaws.org</a></li>
+                        <li class="contact-item"><i class="fas fa-map-marker-alt"></i> Monteria - Cordoba</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Enlace a Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Enlace a Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Enlace a Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Enlace a YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 Rescue Paws. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="chatbot-wrapper"></div>
+
+   <div class="chatbot-container" role="region" aria-label="Chatbot de adopción PawFriend">
+        <button class="chatbot-toggle" aria-expanded="false" aria-label="Abrir chatbot de adopción">
+            <div class="chatbot-avatar">
+                <i class="fas fa-paw avatar-icon" aria-hidden="true"></i>
+                <div class="notification-badge hidden" aria-hidden="true">3</div>
+            </div>
+            <span class="sr-only">Chatbot de Adopción</span>
+        </button>
+        
+        <div class="chatbot-window hidden" role="dialog" aria-modal="true">
+            <div class="chatbot-header">
+                <div class="header-content">
+                    <i class="fas fa-paw header-avatar-icon" aria-hidden="true"></i>
+                    <div>
+                        <h2>PawFriend</h2>
+                        <p class="status"><span class="status-indicator" aria-hidden="true"></span> En línea</p>
+                    </div>
+                </div>
+                <button class="close-btn" aria-label="Cerrar chatbot">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" role="log" aria-live="polite">
+                </div>
+            
+            <div class="chatbot-input">
+                <form id="chatbot-form" class="chatbot-form" novalidate>
+                    <div class="input-group">
+                        <input type="text" id="user-input" placeholder="Escribe tu mensaje..." aria-label="Escribe tu mensaje" required>
+                        <button type="submit" class="send-btn" aria-label="Enviar mensaje">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="accessibility-options">
+                        <button type="button" id="voice-btn" class="accessibility-btn voice-btn" aria-label="Usar reconocimiento de voz">
+                            <i class="fas fa-microphone" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn text-size-btn" aria-label="Cambiar tamaño de texto">
+                            <i class="fas fa-text-height" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn high-contrast-btn" aria-label="Alternar alto contraste">
+                            <i class="fas fa-adjust" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn clear-btn" aria-label="Limpiar conversación">
+                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn restart-btn" aria-label="Reiniciar chatbot">
+                            <i class="fas fa-redo-alt" aria-hidden="true"></i>
+                        </button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/chatbot.js" defer></script>
+    <script src="scripts/eventos.js"></script>
+</body>
+</html>

@@ -1,0 +1,1359 @@
+/* Reset y estilos base */
+:root {
+  /* Colores principales */
+  --primary: #FF7A45; /* Naranja más vibrante */
+  --primary-light: #FFE8DE;
+  --primary-dark: #E05A2B;
+  --secondary: #5EC8D3; /* Turquesa más suave */
+  --secondary-light: #E0F5F7;
+  --secondary-dark: #3AA8B5;
+  --accent: #FFB347; /* Amarillo dorado */
+  
+  /* Escala de grises */
+  --white: #FFFFFF;
+  --light: #F8F9FA;
+  --light-gray: #E9ECEF;
+  --medium-gray: #DEE2E6;
+  --dark-gray: #6C757D;
+  --dark: #2D3436;
+  --black: #212529;
+
+  /* Nuevas variables de gris para alto contraste */
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-300: #D1D5DB;
+  --gray-400: #9CA3AF;
+  --gray-500: #6B7280;
+  --gray-700: #374151;
+  --gray-800: #1F2937;
+  
+  /* Colores de estado */
+  --success: #28A745;
+  --warning: #FFC107;
+  --danger: #DC3545;
+  --info: #17A2B8;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  
+  /* Bordes */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-round: 50px;
+  
+  /* Transiciones */
+  --transition-fast: all 0.15s ease;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-slow: all 0.5s ease;
+  
+  /* Tipografía */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  
+  /* Espaciado */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: var(--dark);
+  background-color: var(--light);
+}
+
+/* Animaciones */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes typing {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Estructura principal del chatbot */
+.chatbot-container {
+  position: fixed;
+  bottom: var(--space-xl);
+  right: var(--space-xl);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-md);
+}
+
+/* Botón flotante */
+.chatbot-toggle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border: none;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+}
+
+.chatbot-toggle:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: var(--shadow-xl);
+  animation: none;
+}
+
+.chatbot-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.chatbot-avatar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos para el ícono de huella de pata */
+.avatar-icon {
+  font-size: 36px; /* Tamaño del ícono */
+  color: var(--white); /* Color blanco para el ícono */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: var(--transition);
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--danger);
+  color: var(--white);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  font-weight: bold;
+  border: 2px solid var(--white);
+  animation: pulse 1.5s infinite;
+}
+
+.notification-badge.hidden {
+  display: none;
+}
+
+/* Ventana del chat */
+.chatbot-window {
+  width: 380px;
+  max-width: 90vw;
+  height: 600px;
+  max-height: 80vh;
+  background-color: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+  transition: var(--transition);
+  border: 2px solid var(--primary);
+}
+
+.chatbot-window.active {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.chatbot-window.hidden {
+  display: none;
+}
+
+/* Encabezado */
+.chatbot-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--white);
+  padding: var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Estilos para el ícono de huella de pata en el encabezado */
+.header-avatar-icon {
+  font-size: 32px; /* Tamaño del ícono en el header */
+  color: var(--primary-light); /* Un color más claro para el ícono */
+  border-radius: 50%;
+  border: 2px solid var(--white);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--white);
+  padding: 4px;
+  width: 48px; /* Asegurar el mismo tamaño que la imagen anterior */
+  height: 48px; /* Asegurar el mismo tamaño que la imagen anterior */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatbot-header h2 {
+  margin: 0;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  font-family: 'Baloo 2', cursive;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--text-xs);
+  opacity: 0.9;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--success);
+  animation: pulse 1.5s infinite;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: var(--space-xs);
+  border-radius: 50%;
+  transition: var(--transition-fast);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+/* Área de mensajes */
+.chatbot-messages {
+  flex: 1;
+  padding: var(--space-md);
+  overflow-y: auto;
+  background-color: var(--light);
+  background-image: 
+    radial-gradient(circle at 1px 1px, var(--medium-gray) 1px, transparent 0);
+  background-size: 15px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  scroll-behavior: smooth;
+}
+
+.chatbot-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+  background: var(--light-gray);
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: var(--radius-round);
+}
+
+/* Estilos de mensajes */
+.message {
+  max-width: 85%;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+  line-height: 1.5;
+  word-wrap: break-word;
+  box-shadow: var(--shadow-sm);
+}
+
+.bot-message {
+  align-self: flex-start;
+  background-color: var(--white);
+  border-bottom-left-radius: var(--radius-xs);
+  border: 1px solid var(--light-gray);
+}
+
+.user-message {
+  align-self: flex-end;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--white);
+  border-bottom-right-radius: var(--radius-xs);
+}
+
+.message-content {
+  font-size: var(--text-base);
+}
+
+.message-content p {
+  margin: 0;
+}
+
+.message-time {
+  font-size: var(--text-xs);
+  color: var(--dark-gray);
+  text-align: right;
+  margin-top: var(--space-xs);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-xs);
+  opacity: 0.8;
+}
+
+.user-message .message-time {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Indicador de "escribiendo" */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-xs);
+  box-shadow: var(--shadow-sm);
+  width: fit-content;
+  border: 1px solid var(--light-gray);
+  margin-bottom: var(--space-xs);
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+/* Contenedor para opciones inline dentro de los mensajes */
+.inline-options-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+/* Estilos para botones de opción dentro de los mensajes */
+.chat-option-button {
+  background-color: var(--secondary); /* Color distintivo para opciones en chat */
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-round);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+
+.chat-option-button:hover {
+  background-color: var(--secondary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Acciones rápidas (barra inferior) */
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+/* Ocultar la barra de acciones rápidas por defecto */
+.chatbot-input .quick-actions.hidden {
+    display: none;
+}
+
+.quick-action-btn {
+  background-color: var(--white);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-round);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  white-space: nowrap;
+}
+
+.quick-action-btn:hover {
+  background-color: var(--primary);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.quick-action-btn i {
+  font-size: 0.8rem;
+}
+
+/* Área de entrada */
+.chatbot-input {
+  padding: var(--space-md);
+  background-color: var(--white);
+  border-top: 1px solid var(--light-gray);
+}
+
+.chatbot-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.input-group {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.input-group input {
+  flex: 1;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--light-gray);
+  border-radius: var(--radius-round);
+  font-family: inherit;
+  font-size: var(--text-base);
+  transition: var(--transition-fast);
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.send-btn {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-btn:hover {
+  transform: rotate(12deg) scale(1.05);
+}
+
+/* Opciones de accesibilidad */
+.accessibility-options {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+.accessibility-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.accessibility-btn:hover {
+  background-color: var(--medium-gray);
+  color: var(--dark);
+}
+
+.accessibility-btn.active {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+
+/* Tarjetas de mascotas */
+.pet-card {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--light-gray);
+  padding: var(--space-sm);
+  margin-top: var(--space-sm);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.pet-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.pet-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.pet-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+}
+
+.pet-info {
+  flex: 1;
+}
+
+.pet-name {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: var(--text-base);
+  margin-bottom: 2px;
+}
+
+.pet-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  font-size: var(--text-xs);
+  color: var(--dark-gray);
+}
+
+.pet-meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pet-description {
+  margin-top: var(--space-xs);
+  font-size: var(--text-sm);
+  color: var(--dark);
+}
+
+.pet-actions {
+  display: flex;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+.pet-btn {
+  flex: 1;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  border: none;
+  font-size: var(--text-xs);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+}
+
+.pet-btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.pet-btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.pet-btn-secondary {
+  background-color: var(--light-gray);
+  color: var(--dark);
+}
+
+.pet-btn-secondary:hover {
+  background-color: var(--medium-gray);
+}
+
+/* Modales */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+}
+
+.modal:not(.hidden) {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(20px);
+  transition: var(--transition);
+  padding: var(--space-md); /* Añadir padding al contenido del modal */
+  position: relative; /* Necesario para el botón de cerrar */
+}
+
+.modal:not(.hidden) .modal-content {
+  transform: translateY(0);
+}
+
+.close-modal {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--dark-gray);
+  transition: var(--transition-fast);
+  line-height: 1; /* Asegura que la 'x' esté centrada */
+}
+
+.close-modal:hover {
+  color: var(--dark);
+}
+
+.modal-content h3 {
+  margin-bottom: var(--space-md);
+  font-size: var(--text-lg);
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Estilos específicos para modal de emergencia */
+.emergency-info {
+  margin-top: var(--space-md);
+}
+
+.emergency-list {
+  list-style: none;
+  margin-top: var(--space-md);
+  padding-left: 0; /* Eliminar padding por defecto de la lista */
+}
+
+.emergency-list li {
+  padding: var(--space-sm);
+  background-color: var(--light);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--dark);
+}
+
+.emergency-list li::before {
+  content: "⚠";
+  color: var(--danger);
+  font-size: 1.1em;
+}
+
+.emergency-contacts {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--light-gray);
+}
+
+.emergency-contacts h4 {
+  margin-bottom: var(--space-md);
+  color: var(--dark);
+}
+
+.contact-card {
+  background-color: var(--light);
+  border: 1px solid var(--light-gray);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-card h5 {
+  margin-bottom: var(--space-xs);
+  color: var(--primary-dark);
+  font-size: var(--text-base);
+}
+
+.contact-card p {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--dark-gray);
+  font-size: var(--text-sm);
+}
+
+.contact-card a {
+  color: var(--secondary-dark);
+  text-decoration: none;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+.emergency-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.emergency-btn {
+  flex: 1;
+  min-width: 150px; /* Asegura que los botones no sean demasiado pequeños */
+}
+
+
+/* Formularios en modales */
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--light-gray);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: var(--text-base);
+  transition: var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* Botones de formulario */
+.btn {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  text-decoration: none; /* Para botones que actúan como enlaces */
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-dark);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* Calculadora de comida */
+#food-result {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--light-gray);
+}
+
+#food-result h4 {
+  margin-bottom: var(--space-sm);
+  color: var(--dark);
+}
+
+#food-result p {
+  margin-bottom: var(--space-sm);
+  color: var(--dark-gray);
+}
+
+#food-result .btn {
+  margin-top: var(--space-md);
+}
+
+
+/* Menú de opciones */
+.options-menu {
+  position: absolute; /* Cambiado a absolute para posicionamiento relativo al chatbot-container */
+  bottom: calc(100% + var(--space-md)); /* Posiciona encima del botón de toggle */
+  right: 0;
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-sm) 0;
+  min-width: 200px;
+  transform: translateY(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+  z-index: 1001;
+}
+
+.options-menu:not(.hidden) {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.menu-item {
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--dark);
+}
+
+.menu-item:hover {
+  background-color: var(--light);
+}
+
+.menu-item i {
+  width: 20px;
+  text-align: center;
+}
+
+/* Inline action buttons (dentro de los mensajes del bot) */
+.inline-action-btn {
+  background-color: var(--secondary);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: inline-flex; /* Permite que el botón se alinee con el texto */
+  align-items: center;
+  gap: var(--space-xs);
+  vertical-align: middle; /* Alinea verticalmente con el texto */
+  margin: 0 4px; /* Pequeño margen para separación */
+}
+
+.inline-action-btn:hover {
+  background-color: var(--secondary-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+
+/* ==================== ESTILOS DE ACCESIBILIDAD PARA CHATBOT (complementarios a styles.css) ==================== */
+
+/* Modo Alto Contraste */
+/* Estos estilos se aplicarán cuando la clase 'high-contrast' esté en el <body> */
+body.high-contrast {
+  background-color: var(--black) !important;
+  color: var(--white) !important;
+}
+
+body.high-contrast .chatbot-window {
+  border-color: var(--gray-400) !important; /* Borde oscuro para contraste */
+  background-color: var(--gray-800) !important; /* Fondo del chat oscuro */
+}
+
+body.high-contrast .chatbot-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+}
+
+body.high-contrast .header-avatar-icon {
+  border-color: var(--gray-400) !important;
+  background-color: var(--gray-700) !important;
+  color: var(--white) !important;
+}
+
+body.high-contrast .chatbot-messages {
+  background-color: var(--gray-700) !important; /* Fondo de mensajes oscuro */
+  background-image: radial-gradient(circle at 1px 1px, var(--gray-500) 1px, transparent 0) !important; /* Puntos más claros */
+}
+
+body.high-contrast .bot-message {
+  background-color: var(--gray-800) !important; /* Mensajes del bot más oscuros */
+  border-color: var(--gray-500) !important;
+  color: var(--white) !important; /* Texto claro */
+}
+
+body.high-contrast .user-message {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+  color: var(--black) !important; /* Texto negro en mensajes de usuario (alto contraste) */
+}
+
+body.high-contrast .message-time {
+  color: var(--gray-400) !important; /* Hora más clara */
+}
+
+body.high-contrast .user-message .message-time {
+  color: rgba(0, 0, 0, 0.7) !important; /* Hora en mensajes de usuario más oscura */
+}
+
+body.high-contrast .typing-indicator {
+  background-color: var(--gray-800) !important;
+  border-color: var(--gray-500) !important;
+}
+
+body.high-contrast .typing-dot {
+  background-color: var(--primary) !important;
+}
+
+body.high-contrast .quick-action-btn {
+  background-color: var(--gray-700) !important;
+  color: var(--white) !important;
+  border-color: var(--gray-500) !important;
+}
+
+body.high-contrast .quick-action-btn:hover {
+  background-color: var(--primary) !important;
+  color: var(--black) !important;
+}
+
+body.high-contrast .chatbot-input {
+  background-color: var(--gray-800) !important;
+  border-top-color: var(--gray-500) !important;
+}
+
+body.high-contrast .input-group input {
+  background-color: var(--gray-700) !important;
+  border-color: var(--gray-500) !important;
+  color: var(--white) !important;
+}
+
+body.high-contrast .input-group input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--primary-light) !important;
+}
+
+body.high-contrast .send-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+  color: var(--black) !important;
+}
+
+body.high-contrast .send-btn:hover {
+  transform: rotate(12deg) scale(1.05);
+}
+
+body.high-contrast .accessibility-btn {
+  background-color: var(--gray-700) !important;
+  color: var(--white) !important;
+}
+
+body.high-contrast .accessibility-btn:hover {
+  background-color: var(--gray-500) !important;
+  color: var(--white) !important;
+}
+
+body.high-contrast .accessibility-btn.active {
+  background-color: var(--secondary) !important;
+  color: var(--black) !important;
+}
+
+body.high-contrast .options-menu {
+  background-color: var(--gray-800) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border: 1px solid var(--gray-500); /* Añadir borde para visibilidad */
+}
+
+body.high-contrast .menu-item {
+  color: var(--white) !important;
+}
+
+body.high-contrast .menu-item:hover {
+  background-color: var(--gray-700) !important;
+}
+
+body.high-contrast .modal-content {
+  background-color: var(--gray-800) !important;
+  box-shadow: var(--shadow-xl) !important;
+  border: 1px solid var(--gray-500); /* Añadir borde para visibilidad */
+}
+
+body.high-contrast .close-modal {
+  color: var(--gray-400) !important;
+}
+
+body.high-contrast .close-modal:hover {
+  color: var(--white) !important;
+}
+
+body.high-contrast .modal-content h3,
+body.high-contrast .form-group label,
+body.high-contrast .emergency-contacts h4,
+body.high-contrast #food-result h4 {
+  color: var(--white) !important;
+}
+
+body.high-contrast .emergency-list li,
+body.high-contrast .contact-card {
+  background-color: var(--gray-700) !important;
+  border-color: var(--gray-600) !important;
+  color: var(--white) !important;
+}
+
+body.high-contrast .contact-card p,
+body.high-contrast #food-result p {
+  color: var(--gray-300) !important;
+}
+
+body.high-contrast .contact-card a {
+  color: var(--secondary-light) !important;
+}
+
+body.high-contrast .form-group input,
+body.high-contrast .form-group select {
+  background-color: var(--gray-700) !important;
+  border-color: var(--gray-500) !important;
+  color: var(--white) !important;
+}
+
+body.high-contrast .btn-primary {
+  background-color: var(--primary) !important;
+  color: var(--black) !important;
+}
+
+body.high-contrast .btn-primary:hover {
+  background-color: var(--primary-dark) !important;
+}
+
+body.high-contrast .btn-secondary {
+  background-color: var(--secondary) !important;
+  color: var(--black) !important;
+}
+
+body.high-contrast .btn-secondary:hover {
+  background-color: var(--secondary-dark) !important;
+}
+
+body.high-contrast .inline-action-btn,
+body.high-contrast .chat-option-button { /* Añadido para alto contraste */
+  background-color: var(--secondary) !important;
+  color: var(--black) !important;
+}
+
+body.high-contrast .inline-action-btn:hover,
+body.high-contrast .chat-option-button:hover { /* Añadido para alto contraste */
+  background-color: var(--secondary-dark) !important;
+}
+
+/* Tarjetas de mascotas en alto contraste */
+body.high-contrast .pet-card {
+  background-color: var(--gray-800) !important;
+  border-color: var(--gray-500) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+body.high-contrast .pet-card:hover {
+  box-shadow: var(--shadow-md) !important;
+}
+
+body.high-contrast .pet-name {
+  color: var(--white) !important;
+}
+
+body.high-contrast .pet-meta {
+  color: var(--gray-400) !important;
+}
+
+body.high-contrast .pet-description {
+  color: var(--gray-200) !important;
+}
+
+body.high-contrast .pet-btn-primary {
+  background-color: var(--primary) !important;
+  color: var(--black) !important;
+}
+
+body.high-contrast .pet-btn-primary:hover {
+  background-color: var(--primary-dark) !important;
+}
+
+body.high-contrast .pet-btn-secondary {
+  background-color: var(--gray-700) !important;
+  color: var(--white) !important;
+}
+
+body.high-contrast .pet-btn-secondary:hover {
+  background-color: var(--gray-600) !important;
+}
+
+
+/* Tamaños de texto */
+/* Estos estilos se aplicarán cuando la clase 'text-large' o 'text-xlarge' esté en el <body> */
+body.text-large .chatbot-messages,
+body.text-large .chatbot-input {
+  font-size: calc(var(--text-base) * 1.1) !important; /* Aumenta el tamaño de texto base en un 10% */
+}
+
+body.text-large .quick-action-btn,
+body.text-large .chat-option-button { /* Añadido para tamaño de texto */
+  font-size: calc(var(--text-sm) * 1.1) !important;
+  padding: calc(var(--space-sm) * 1.1) calc(var(--space-md) * 1.1) !important;
+}
+
+body.text-large .message {
+  padding: calc(var(--space-sm) * 1.1) calc(var(--space-md) * 1.1) !important;
+}
+
+body.text-large .input-group input {
+  padding: calc(var(--space-sm) * 1.1) calc(var(--space-md) * 1.1) !important;
+  font-size: calc(var(--text-base) * 1.1) !important;
+}
+
+body.text-large .chatbot-header h2 {
+  font-size: calc(var(--text-xl) * 1.1) !important;
+}
+
+body.text-large .status {
+  font-size: calc(var(--text-xs) * 1.1) !important;
+}
+
+body.text-large .message-time {
+  font-size: calc(var(--text-xs) * 1.1) !important;
+}
+
+body.text-large .pet-name {
+  font-size: calc(var(--text-base) * 1.1) !important;
+}
+
+body.text-large .pet-meta {
+  font-size: calc(var(--text-xs) * 1.1) !important;
+}
+
+body.text-large .pet-description {
+  font-size: calc(var(--text-sm) * 1.1) !important;
+}
+
+body.text-large .pet-btn {
+  font-size: calc(var(--text-xs) * 1.1) !important;
+}
+
+body.text-large .modal-title {
+  font-size: calc(var(--text-lg) * 1.1) !important;
+}
+
+body.text-large .form-group label {
+  font-size: calc(var(--text-base) * 1.1) !important;
+}
+
+body.text-large .form-group input,
+body.text-large .form-group select {
+  font-size: calc(var(--text-base) * 1.1) !important;
+}
+
+body.text-large .btn {
+  font-size: calc(var(--text-base) * 1.1) !important;
+}
+
+body.text-large .menu-item {
+  font-size: calc(var(--text-base) * 1.1) !important;
+}
+
+/* Text XLarge */
+body.text-xlarge .chatbot-messages,
+body.text-xlarge .chatbot-input {
+  font-size: calc(var(--text-base) * 1.2) !important; /* Aumenta el tamaño de texto base en un 20% */
+}
+
+body.text-xlarge .quick-action-btn,
+body.text-xlarge .chat-option-button { /* Añadido para tamaño de texto */
+  font-size: calc(var(--text-sm) * 1.2) !important;
+  padding: calc(var(--space-sm) * 1.2) calc(var(--space-md) * 1.2) !important;
+}
+
+body.text-xlarge .message {
+  padding: calc(var(--space-sm) * 1.2) calc(var(--space-md) * 1.2) !important;
+}
+
+body.text-xlarge .input-group input {
+  padding: calc(var(--space-sm) * 1.2) calc(var(--space-md) * 1.2) !important;
+  font-size: calc(var(--text-base) * 1.2) !important;
+}
+
+body.text-xlarge .chatbot-header h2 {
+  font-size: calc(var(--text-xl) * 1.2) !important;
+}
+
+body.text-xlarge .status {
+  font-size: calc(var(--text-xs) * 1.2) !important;
+}
+
+body.text-xlarge .message-time {
+  font-size: calc(var(--text-xs) * 1.2) !important;
+}
+
+body.text-xlarge .pet-name {
+  font-size: calc(var(--text-base) * 1.2) !important;
+}
+
+body.text-xlarge .pet-meta {
+  font-size: calc(var(--text-xs) * 1.2) !important;
+}
+
+body.text-xlarge .pet-description {
+  font-size: calc(var(--text-sm) * 1.2) !important;
+}
+
+body.text-xlarge .pet-btn {
+  font-size: calc(var(--text-xs) * 1.2) !important;
+}
+
+body.text-xlarge .modal-title {
+  font-size: calc(var(--text-lg) * 1.2) !important;
+}
+
+body.text-xlarge .form-group label {
+  font-size: calc(var(--text-base) * 1.2) !important;
+}
+
+body.text-xlarge .form-group input,
+body.text-xlarge .form-group select {
+  font-size: calc(var(--text-base) * 1.2) !important;
+}
+
+body.text-xlarge .btn {
+  font-size: calc(var(--text-base) * 1.2) !important;
+}
+
+body.text-xlarge .menu-item {
+  font-size: calc(var(--text-base) * 1.2) !important;
+}
+
+
+/* Responsive */
+@media (max-width: 480px) {
+  .chatbot-container {
+    bottom: var(--space-md);
+    right: var(--space-md);
+  }
+  
+  .chatbot-toggle {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .chatbot-window {
+    width: calc(100vw - var(--space-md) * 2);
+    height: 70vh;
+    bottom: 80px;
+    right: var(--space-md);
+  }
+  
+  .pet-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .options-menu {
+    min-width: 180px;
+  }
+}

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopción Responsable | Rescue Paws</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos/adopcion.css">
+    <link rel="stylesheet" href="estilos/chatbot.css" />
+
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-paw logo-icon"></i>
+                <span class="logo-text">Rescue Paws</span>
+            </a>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li class="nav-item"><a href="adopcion.html" class="nav-link"><i class="fas fa-heart"></i> Adoptar</a></li>
+                    <li class="nav-item"><a href="donar.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donar</a></li>
+                    <li class="nav-item"><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+                    <li class="nav-item"><a href="testimonios.html" class="nav-link"><i class="fas fa-comment"></i> Testimonios</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link active"><i class="fas fa-user-circle"></i> Acceso</a></li>
+                    <li class="nav-item nav-profile">
+                        <a href="perfil.html" class="nav-link active" aria-label="Perfil de usuario">
+                            <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600"alt="Perfil de usuario" class="profile-img">
+                        </a>
+                    </li>
+                </ul>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="adoption-intro">
+                <h1>¡Adopta un Amigo, Cambia una Vida!</h1>
+                <p class="lead-text">Completa nuestro formulario de adopción en 4 sencillos pasos. Tu futuro compañero te espera.</p>
+                <p>Este proceso nos ayuda a encontrar el hogar perfecto para cada mascota. ¡Gracias por tu compromiso!</p>
+            </section>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <ul class="progress-steps">
+                    <li class="step active" data-step="1">
+                        <i class="step-icon fas fa-user"></i>
+                        <span class="step-text">Tus datos</span>
+                    </li>
+                    <li class="step" data-step="2">
+                        <i class="step-icon fas fa-home"></i>
+                        <span class="step-text">Tu hogar</span>
+                    </li>
+                    <li class="step" data-step="3">
+                        <i class="step-icon fas fa-paw"></i>
+                        <span class="step-text">Mascota ideal</span>
+                    </li>
+                    <li class="step" data-step="4">
+                        <i class="step-icon fas fa-check-circle"></i>
+                        <span class="step-text">Confirmación</span>
+                    </li>
+                </ul>
+            </div>
+
+            <form id="adoption-form" class="adoption-form">
+                <div class="form-step active" data-step="1">
+                    <h2 class="step-title"><i class="fas fa-user-edit"></i> Información personal</h2>
+                    <p class="step-description">Comencemos con algunos datos básicos sobre ti.</p>
+                    
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="full-name">Nombre completo <span class="required-asterisk">*</span></label>
+                            <div class="input-container">
+                                <input type="text" id="full-name" name="full-name" required placeholder="Ej: María González">
+                                <i class="fas fa-check-circle input-valid"></i>
+                                <i class="fas fa-exclamation-circle input-invalid"></i>
+                            </div>
+                            <span class="error-message">Por favor ingresa tu nombre completo.</span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="email">Correo electrónico <span class="required-asterisk">*</span></label>
+                            <div class="input-container">
+                                <input type="email" id="email" name="email" required placeholder="ejemplo@mail.com">
+                                <i class="fas fa-check-circle input-valid"></i>
+                                <i class="fas fa-exclamation-circle input-invalid"></i>
+                            </div>
+                            <span class="error-message">Ingresa un correo electrónico válido.</span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="phone">Teléfono <span class="required-asterisk">*</span></label>
+                            <div class="input-container">
+                                <input type="tel" id="phone" name="phone" required placeholder="+52 55 1234 5678">
+                                <i class="fas fa-check-circle input-valid"></i>
+                                <i class="fas fa-exclamation-circle input-invalid"></i>
+                            </div>
+                            <span class="error-message">Ingresa un número de teléfono válido.</span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="age">Edad <span class="required-asterisk">*</span></label>
+                            <div class="input-container">
+                                <input type="number" id="age" name="age" min="18" max="99" required placeholder="18">
+                                <i class="fas fa-check-circle input-valid"></i>
+                                <i class="fas fa-exclamation-circle input-invalid"></i>
+                            </div>
+                            <span class="error-message">Debes ser mayor de 18 años para adoptar.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-next" data-next="2">Siguiente paso <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="2">
+                    <h2 class="step-title"><i class="fas fa-home"></i> Sobre tu hogar</h2>
+                    <p class="step-description">Queremos asegurarnos que tu mascota tendrá un ambiente adecuado.</p>
+                    
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="housing-type">Tipo de vivienda <span class="required-asterisk">*</span></label>
+                            <select id="housing-type" name="housing-type" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="house">Casa con patio</option>
+                                <option value="apartment">Departamento</option>
+                                <option value="condo">Condominio</option>
+                                <option value="other">Otro</option>
+                            </select>
+                            <span class="error-message">Por favor, selecciona tu tipo de vivienda.</span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>¿Tienes acceso a área exterior? <span class="required-asterisk">*</span></label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="yard-access" value="yes" required>
+                                    <span class="radio-checkmark"></span>
+                                    <span class="radio-label">Sí</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="yard-access" value="no">
+                                    <span class="radio-checkmark"></span>
+                                    <span class="radio-label">No</span>
+                                </label>
+                            </div>
+                            <span class="error-message">Este campo es requerido.</span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="family-members">Personas en el hogar <span class="required-asterisk">*</span></label>
+                            <div class="input-container">
+                                <input type="number" id="family-members" name="family-members" min="1" required placeholder="Ej: 3">
+                                <i class="fas fa-check-circle input-valid"></i>
+                                <i class="fas fa-exclamation-circle input-invalid"></i>
+                            </div>
+                            <span class="error-message">Ingresa el número de personas que viven contigo.</span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>¿Tienes otras mascotas? <span class="required-asterisk">*</span></label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="current-pets" value="yes" required>
+                                    <span class="radio-checkmark"></span>
+                                    <span class="radio-label">Sí</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="current-pets" value="no">
+                                    <span class="radio-checkmark"></span>
+                                    <span class="radio-label">No</span>
+                                </label>
+                            </div>
+                            <span class="error-message">Este campo es requerido.</span>
+                        </div>
+                        
+                        <div class="input-group conditional" data-condition="current-pets" data-value="yes">
+                            <label for="pets-details">Describe tus mascotas actuales (tipo, edad, temperamento) (Opcional)</label>
+                            <textarea id="pets-details" name="pets-details" placeholder="Ej: 1 perro mestizo de 3 años, muy amigable. 2 gatos de 1 y 2 años, tranquilos."></textarea>
+                            <span class="error-message">Por favor, describe tus mascotas actuales.</span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>¿Tienes experiencia previa con mascotas? <span class="required-asterisk">*</span></label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="experience" value="yes" required>
+                                    <span class="radio-checkmark"></span>
+                                    <span class="radio-label">Sí</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="experience" value="no">
+                                    <span class="radio-checkmark"></span>
+                                    <span class="radio-label">No</span>
+                                </label>
+                            </div>
+                            <span class="error-message">Este campo es requerido.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-prev" data-prev="1"><i class="fas fa-arrow-left"></i> Anterior</button>
+                        <button type="button" class="btn btn-next" data-next="3">Siguiente paso <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="3">
+                    <h2 class="step-title"><i class="fas fa-paw"></i> Tu mascota ideal</h2>
+                    <p class="step-description">Selecciona el tipo de mascota que buscas adoptar y sus características preferidas.</p>
+                    
+                    <div class="pet-selection">
+                        <div class="pet-options">
+                            <div class="pet-option active" data-pet-type="dog">
+                                <div class="pet-icon">
+                                    <i class="fas fa-dog"></i>
+                                </div>
+                                <span class="pet-label">Perro</span>
+                            </div>
+                            <div class="pet-option" data-pet-type="cat">
+                                <div class="pet-icon">
+                                    <i class="fas fa-cat"></i>
+                                </div>
+                                <span class="pet-label">Gato</span>
+                            </div>
+                            <div class="pet-option" data-pet-type="other">
+                                <div class="pet-icon">
+                                    <i class="fas fa-paw"></i>
+                                </div>
+                                <span class="pet-label">Otro</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pet-details active-pet-details" id="dog-details">
+                            <h3>Preferencias para perros</h3>
+                            <div class="form-grid">
+                                <div class="input-group">
+                                    <label for="dog-size">Tamaño preferido <span class="required-asterisk">*</span></label>
+                                    <select id="dog-size" name="dog-size" required>
+                                        <option value="" disabled selected>Selecciona</option>
+                                        <option value="small">Pequeño (menos de 10 kg)</option>
+                                        <option value="medium">Mediano (10-25 kg)</option>
+                                        <option value="large">Grande (más de 25 kg)</option>
+                                        <option value="any">Cualquier tamaño</option>
+                                    </select>
+                                    <span class="error-message">Por favor, selecciona el tamaño preferido.</span>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="dog-age">Edad preferida <span class="required-asterisk">*</span></label>
+                                    <select id="dog-age" name="dog-age" required>
+                                        <option value="" disabled selected>Selecciona</option>
+                                        <option value="puppy">Cachorro (0-1 año)</option>
+                                        <option value="young">Joven (1-3 años)</option>
+                                        <option value="adult">Adulto (3-8 años)</option>
+                                        <option value="senior">Senior (8+ años)</option>
+                                        <option value="any">Cualquier edad</option>
+                                    </select>
+                                    <span class="error-message">Por favor, selecciona la edad preferida.</span>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="dog-energy">Nivel de energía <span class="required-asterisk">*</span></label>
+                                    <select id="dog-energy" name="dog-energy" required>
+                                        <option value="" disabled selected>Selecciona</option>
+                                        <option value="low">Baja</option>
+                                        <option value="medium">Moderada</option>
+                                        <option value="high">Alta</option>
+                                        <option value="any">Cualquiera</option>
+                                    </select>
+                                    <span class="error-message">Por favor, selecciona el nivel de energía.</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pet-details" id="cat-details">
+                            <h3>Preferencias para gatos</h3>
+                            <div class="form-grid">
+                                <div class="input-group">
+                                    <label for="cat-age">Edad preferida <span class="required-asterisk">*</span></label>
+                                    <select id="cat-age" name="cat-age" required>
+                                        <option value="" disabled selected>Selecciona</option>
+                                        <option value="kitten">Gatito (0-1 año)</option>
+                                        <option value="young">Joven (1-3 años)</option>
+                                        <option value="adult">Adulto (3-10 años)</option>
+                                        <option value="senior">Senior (10+ años)</option>
+                                        <option value="any">Cualquier edad</option>
+                                    </select>
+                                    <span class="error-message">Por favor, selecciona la edad preferida.</span>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="cat-personality">Personalidad <span class="required-asterisk">*</span></label>
+                                    <select id="cat-personality" name="cat-personality" required>
+                                        <option value="" disabled selected>Selecciona</option>
+                                        <option value="calm">Tranquilo/a</option>
+                                        <option value="playful">Juguetón/a</option>
+                                        <option value="independent">Independiente</option>
+                                        <option value="affectionate">Cariñoso/a</option>
+                                        <option value="any">Cualquiera</option>
+                                    </select>
+                                    <span class="error-message">Por favor, selecciona la personalidad deseada.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group other-pet-details" style="display: none;">
+                            <label for="other-pet-description">Describe el tipo de mascota que buscas <span class="required-asterisk">*</span></label>
+                            <textarea id="other-pet-description" name="other-pet-description" placeholder="Ej: Un hámster dorado, un conejo enano, un pájaro periquito."></textarea>
+                            <span class="error-message">Por favor, describe la mascota que buscas.</span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="adoption-reason">¿Por qué quieres adoptar una mascota? <span class="required-asterisk">*</span></label>
+                            <textarea id="adoption-reason" name="adoption-reason" required placeholder="Cuéntanos tu motivación para adoptar y cómo crees que una mascota enriquecerá tu vida..."></textarea>
+                            <span class="error-message">Por favor, explícanos por qué quieres adoptar.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="available-pets">
+                        <h3><i class="fas fa-search"></i> Mascotas disponibles que podrían interesarte</h3>
+                        <p class="section-description">Basándonos en tus preferencias, estas son algunas de las mascotas que buscan un hogar. ¡Haz clic para seleccionar tu favorita!</p>
+                        <div class="pets-grid" id="pets-grid">
+                            <div class="loading-pets">
+                                <i class="fas fa-paw fa-spin"></i>
+                                <p>Buscando mascotas disponibles...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-prev" data-prev="2"><i class="fas fa-arrow-left"></i> Anterior</button>
+                        <button type="button" class="btn btn-next" data-next="4">Siguiente paso <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="4">
+                    <h2 class="step-title"><i class="fas fa-check-circle"></i> Revisa tu información</h2>
+                    <p class="step-description">Por favor verifica que todos los datos sean correctos antes de enviar.</p>
+                    
+                    <div class="summary-section">
+                        <h3><i class="fas fa-user"></i> Tus datos</h3>
+                        <div class="summary-grid" id="personal-summary">
+                            </div>
+                        
+                        <h3><i class="fas fa-home"></i> Sobre tu hogar</h3>
+                        <div class="summary-grid" id="home-summary">
+                            </div>
+                        
+                        <h3><i class="fas fa-paw"></i> Preferencias de mascota</h3>
+                        <div class="summary-grid" id="pet-summary">
+                            </div>
+                    </div>
+                    
+                    <div class="form-group consent-group">
+                        <label class="checkbox-container">Acepto los <a href="#">términos y condiciones</a> y declaro que toda la información proporcionada es verídica. <span class="required-asterisk">*</span>
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="error-message">Debes aceptar los términos para continuar.</span>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-prev" data-prev="3"><i class="fas fa-arrow-left"></i> Anterior</button>
+                        <button type="submit" class="btn btn-submit" id="submit-request-btn"><i class="fas fa-paper-plane"></i> Enviar solicitud</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="confirmation-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h3>¡Solicitud recibida!</h3>
+            </div>
+            
+            <div class="modal-body">
+                <p>Gracias por tu interés en adoptar. Hemos recibido tu solicitud correctamente.</p>
+                <p>Nuestro equipo revisará tu información y se pondrá en contacto contigo en un plazo máximo de 48 horas.</p>
+                
+                <div class="next-steps">
+                    <h4>¿Qué sigue ahora?</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Revisión de tu solicitud</li>
+                        <li><i class="fas fa-check"></i> Entrevista telefónica (si aplica)</li>
+                        <li><i class="fas fa-check"></i> Visita al refugio</li>
+                        <li><i class="fas fa-check"></i> Proceso de adopción</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button id="modal-close-btn" class="btn btn-modal">Entendido</button>
+                <a href="index.html" class="btn btn-modal-secondary">Volver al inicio</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Rescue Paws</h4>
+                    <p>Rescatando, rehabilitando y reubicando mascotas necesitadas desde 2015.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-phone"></i> +52 55 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> hola@rescuepaws.org</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Ciudad de México</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+               
+            <div class="footer-bottom">
+                <p>&copy; 2023 Rescue Paws. Todos los derechos reservados.</p>
+                <div class="footer-links">
+                    <a href="#">Términos</a> | 
+                    <a href="#">Privacidad</a> | 
+                    <a href="#">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+<div class="chatbot-container" role="region" aria-label="Chatbot de adopción PawFriend">
+        <button class="chatbot-toggle" aria-expanded="false" aria-label="Abrir chatbot de adopción">
+            <div class="chatbot-avatar">
+                <i class="fas fa-paw avatar-icon" aria-hidden="true"></i>
+                <div class="notification-badge hidden" aria-hidden="true">3</div>
+            </div>
+            <span class="sr-only">Chatbot de Adopción</span>
+        </button>
+        
+        <div class="chatbot-window hidden" role="dialog" aria-modal="true">
+            <div class="chatbot-header">
+                <div class="header-content">
+                    <i class="fas fa-paw header-avatar-icon" aria-hidden="true"></i>
+                    <div>
+                        <h2>PawFriend</h2>
+                        <p class="status"><span class="status-indicator" aria-hidden="true"></span> En línea</p>
+                    </div>
+                </div>
+                <button class="close-btn" aria-label="Cerrar chatbot">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" role="log" aria-live="polite">
+                </div>
+            
+            <div class="chatbot-input">
+                <form id="chatbot-form" class="chatbot-form" novalidate>
+                    <div class="input-group">
+                        <input type="text" id="user-input" placeholder="Escribe tu mensaje..." aria-label="Escribe tu mensaje" required>
+                        <button type="submit" class="send-btn" aria-label="Enviar mensaje">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="accessibility-options">
+                        <button type="button" id="voice-btn" class="accessibility-btn voice-btn" aria-label="Usar reconocimiento de voz">
+                            <i class="fas fa-microphone" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn text-size-btn" aria-label="Cambiar tamaño de texto">
+                            <i class="fas fa-text-height" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn high-contrast-btn" aria-label="Alternar alto contraste">
+                            <i class="fas fa-adjust" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn clear-btn" aria-label="Limpiar conversación">
+                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn restart-btn" aria-label="Reiniciar chatbot">
+                            <i class="fas fa-redo-alt" aria-hidden="true"></i>
+                        </button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/chatbot.js" defer></script>
+    <script src="scripts/adopcion.js"></script>
+</body>
+</html>
+    

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto | Rescue Paws</title>
+    <meta name="description" content="Ponte en contacto con Rescue Paws para preguntas, soporte o para involucrarte en nuestra misión de rescate animal.">
+    <meta name="keywords" content="contacto rescate animal, adopción mascotas, donar animales, voluntariado animales">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="canonical" href="https://www.rescuepaws.org/contacto" />
+    <link rel="stylesheet" href="estilos/contacto.css"/>
+    <link rel="stylesheet" href="estilos/cchatbot.css"/>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="Ir a inicio">
+                <i class="fas fa-paw logo-icon"></i>
+                <span class="logo-text">Rescue Paws</span>
+            </a>
+            <nav class="main-nav" aria-label="Navegación principal">
+                <ul class="nav-list">
+                     <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li class="nav-item"><a href="adopcion.html" class="nav-link"><i class="fas fa-heart"></i> Adoptar</a></li>
+                    <li class="nav-item"><a href="donar.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donar</a></li>
+                    <li class="nav-item"><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+                    <li class="nav-item"><a href="testimonios.html" class="nav-link"><i class="fas fa-comment"></i> Testimonios</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link active"><i class="fas fa-envelope"></i> Contacto</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link active"><i class="fas fa-user-circle"></i> Acceso</a></li>
+                    <li class="nav-item nav-profile">
+                        <a href="perfil.html" class="nav-link" aria-label="Perfil de usuario">
+                            <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                                 alt="Perfil de usuario" 
+                                 class="profile-img" 
+                                 width="40" 
+                                 height="40" 
+                                 loading="lazy" />
+                        </a>
+                    </li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Abrir/cerrar menú móvil" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content pagina-contacto">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <a href="index.html">Inicio</a>
+                <span class="separator">/</span>
+                <span aria-current="page">Contacto</span>
+            </nav>
+
+            <section class="contact-hero">
+                <div class="hero-content">
+                    <h1>Contáctanos</h1>
+                    <p class="hero-text">Estamos aquí para ayudarte. Contáctanos con preguntas, solicitudes de soporte o para involucrarte en nuestra misión.</p>
+                    <div class="hero-illustration">
+                        <img src="https://images.pexels.com/photos/4588052/pexels-photo-4588052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                             alt="Persona acariciando un perro" 
+                             loading="lazy" 
+                             class="hero-img">
+                    </div>
+                </div>
+            </section>
+
+            <div class="contact-grid">
+                <section class="contact-form-section" aria-labelledby="form-heading">
+                    <div class="form-container">
+                        <h2 id="form-heading">Envía un Mensaje</h2>
+                        <form id="contactForm" class="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="name">Tu Nombre <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" placeholder="Ingresa tu nombre completo" required aria-required="true">
+                                <span class="error-message" id="name-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="tu@email.com" required aria-required="true">
+                                <span class="error-message" id="email-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Asunto</label>
+                                <select id="subject" name="subject">
+                                    <option value="">Selecciona un tema</option>
+                                    <option value="adopcion">Adopción</option>
+                                    <option value="donaciones">Donaciones</option>
+                                    <option value="voluntariado">Voluntariado</option>
+                                    <option value="preguntas">Preguntas Generales</option>
+                                    <option value="otros">Otros</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mensaje <span class="required">*</span></label>
+                                <textarea id="message" name="message" rows="6" placeholder="¿Cómo podemos ayudarte?" required aria-required="true"></textarea>
+                                <span class="error-message" id="message-error"></span>
+                            </div>
+                            <div class="form-submit">
+                                <button type="submit" class="btn submit-btn" aria-label="Enviar mensaje">
+                                    <span class="btn-text">Enviar Mensaje</span>
+                                    <i class="fas fa-paper-plane btn-icon"></i>
+                                </button>
+                                <p class="form-note">Todos los campos marcados con <span class="required">*</span> son obligatorios.</p>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <section class="other-contact-methods" aria-labelledby="contact-methods-heading">
+                    <div class="contact-methods-container">
+                        <h2 id="contact-methods-heading">Otras Formas de Contacto</h2>
+                        <div class="contact-info-cards">
+                            <div class="contact-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-phone" aria-hidden="true"></i>
+                                </div>
+                                <h3>Llámanos</h3>
+                                <p><a href="tel:+573001234567" class="contact-link">+57 300 123 4567</a></p>
+                                <p class="contact-details">Lun-Vie, 9am-6pm</p>
+                            </div>
+                            <div class="contact-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                                </div>
+                                <h3>Email</h3>
+                                <p><a href="mailto:info@rescuepaws.co" class="contact-link">info@rescuepaws.co</a></p>
+                                <p class="contact-details">Respondemos dentro de 24 horas</p>
+                            </div>
+                            <div class="contact-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                </div>
+                                <h3>Visítanos</h3>
+                                <address>
+                                    <p>Calle 123 #45-67</p>
+                                    <p class="contact-details">Montería, Córdoba</p>
+                                </address>
+                            </div>
+                            <div class="contact-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                                </div>
+                                <h3>Agenda una Visita</h3>
+                                <p><a href="#" class="contact-link">Reserva tu cita</a></p>
+                                <p class="contact-details">Para adopciones o visitas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-media-section">
+                            <h3>Síguenos en Redes</h3>
+                            <div class="social-links">
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Rescue Paws" class="social-link">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Rescue Paws" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter de Rescue Paws" class="social-link">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube de Rescue Paws" class="social-link">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="map-section" aria-label="Ubicación del refugio">
+                <h2 class="visually-hidden">Nuestra Ubicación</h2>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15705.510606990426!2d-75.88210375!3d8.75628635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e5a2f5f1c2b3e1f%3A0x7d2b3e1f0c2b3e1f!2sMonter%C3%ADa%2C%20C%C3%B3rdoba%2C%20Colombia!5e0!3m2!1sen!2sus!4v1678901234567!5m2!1sen!2sus" 
+                            width="600" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            title="Mapa de ubicación de Rescue Paws"></iframe>
+                </div>
+            </section>
+
+            <section class="faq-section" aria-labelledby="faq-heading">
+                <h2 id="faq-heading">Preguntas Frecuentes</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+                            ¿Cómo puedo adoptar una mascota?
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div id="faq1" class="faq-answer">
+                            <p>El proceso de adopción comienza con la visita a nuestro refugio o llenando el formulario de adopción en línea. Realizamos una entrevista para asegurarnos de que la mascota y la familia sean compatibles.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+                            ¿Qué necesito para ser voluntario?
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div id="faq2" class="faq-answer">
+                            <p>Necesitas amor por los animales, disponibilidad de tiempo y completar nuestro formulario de voluntariado. No se requiere experiencia previa, nosotros te capacitamos.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+                            ¿Aceptan donaciones de alimentos?
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div id="faq3" class="faq-answer">
+                            <p>Sí, aceptamos donaciones de alimento para perros y gatos, preferiblemente en su empaque original y con fecha de vencimiento vigente.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Rescue Paws</h4>
+                    <p>Dedicados a rescatar, rehabilitar y encontrar hogares amorosos para mascotas necesitadas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="contact-list">
+                        <li class="contact-item"><i class="fas fa-phone"></i> <a href="tel:+573001234567">+57 300 123 4567</a></li>
+                        <li class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:info@rescuepaws.co">info@rescuepaws.co</a></li>
+                        <li class="contact-item"><i class="fas fa-map-marker-alt"></i> Montería, Córdoba</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Rescue Paws. Todos los derechos reservados.</p>
+                <nav class="footer-nav" aria-label="Navegación secundaria">
+                    <ul>
+                        <li><a href="privacidad.html">Política de Privacidad</a></li>
+                        <li><a href="terminos.html">Términos de Servicio</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+   
+
+    <script src="scripts/Contacto.js" defer></script>
+    <div class="chatbot-container" role="region" aria-label="Chatbot de adopción PawFriend">
+        <button class="chatbot-toggle" aria-expanded="false" aria-label="Abrir chatbot de adopción">
+            <div class="chatbot-avatar">
+                <i class="fas fa-paw avatar-icon" aria-hidden="true"></i>
+                <div class="notification-badge hidden" aria-hidden="true">3</div>
+            </div>
+            <span class="sr-only">Chatbot de Adopción</span>
+        </button>
+        
+        <div class="chatbot-window hidden" role="dialog" aria-modal="true">
+            <div class="chatbot-header">
+                <div class="header-content">
+                    <i class="fas fa-paw header-avatar-icon" aria-hidden="true"></i>
+                    <div>
+                        <h2>PawFriend</h2>
+                        <p class="status"><span class="status-indicator" aria-hidden="true"></span> En línea</p>
+                    </div>
+                </div>
+                <button class="close-btn" aria-label="Cerrar chatbot">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" role="log" aria-live="polite">
+                </div>
+            
+            <div class="chatbot-input">
+                <form id="chatbot-form" class="chatbot-form" novalidate>
+                    <div class="input-group">
+                        <input type="text" id="user-input" placeholder="Escribe tu mensaje..." aria-label="Escribe tu mensaje" required>
+                        <button type="submit" class="send-btn" aria-label="Enviar mensaje">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="accessibility-options">
+                        <button type="button" id="voice-btn" class="accessibility-btn voice-btn" aria-label="Usar reconocimiento de voz">
+                            <i class="fas fa-microphone" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn text-size-btn" aria-label="Cambiar tamaño de texto">
+                            <i class="fas fa-text-height" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn high-contrast-btn" aria-label="Alternar alto contraste">
+                            <i class="fas fa-adjust" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn clear-btn" aria-label="Limpiar conversación">
+                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn restart-btn" aria-label="Reiniciar chatbot">
+                            <i class="fas fa-redo-alt" aria-hidden="true"></i>
+                        </button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/chatbot.js" defer></script>
+    
+</body>
+</html>

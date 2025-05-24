@@ -1,0 +1,641 @@
+/* estilos/login.css */
+
+/* Variables (Sincronizado con Perfil.css y contacto.css) */
+:root {
+  --primary-color: #FF6B6B;
+  --primary-light: #ff9e9e;
+  --primary-dark: #e05555;
+  --secondary-color: #4ECDC4;
+  --secondary-dark: #3ab4ac;
+  --dark-color: #292F36;
+  --dark-light: #2a7a8c;
+  --light-color: #F7FFF7;
+  --accent-color: #FFE66D;
+  --white: #FFFFFF;
+  --gray-50: #f9fafb;
+  --gray-100: #F8F9FA;
+  --gray-200: #E9ECEF;
+  --gray-300: #DEE2E6;
+  --gray-400: #CED4DA;
+  --gray-500: #6C757D;
+  --gray-600: #5A6268;
+  --gray-700: #495057;
+  --gray-800: #343A40;
+  --black: #212529;
+  --success-color: #4CAF50;
+  --error-color: #F44336;
+  --warning-color: #FFC107;
+  --info-color: #17a2b8;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-round: 50px;
+
+  --font-primary: 'Poppins', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 1.75rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --line-height-normal: 1.6;
+  --transition-fast: all 0.15s ease;
+  --transition-normal: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: var(--line-height-normal);
+    color: var(--dark-color);
+    background-color: var(--gray-50); /* Fondo más suave para la página de login */
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: var(--transition-fast);
+}
+
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Header (Copiar de Perfil.css para consistencia) */
+.header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--dark-color);
+    font-size: 1.6rem;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.logo-icon {
+    color: var(--primary-color);
+    margin-right: 8px;
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover,
+.logo.active-logo {
+    color: var(--primary-color);
+}
+
+.logo:hover .logo-icon {
+    transform: rotate(10deg) translateY(-3px);
+}
+
+.main-nav .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    display: flex; /* Para íconos */
+    align-items: center; /* Para íconos */
+    gap: 5px; /* Para íconos */
+    transition: color 0.3s ease;
+}
+
+.nav-link i {
+    margin-right: 5px;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover i,
+.nav-link.active i {
+    color: var(--primary-color);
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.1);
+    border-color: var(--secondary-color);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--dark-color);
+    cursor: pointer;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    margin: 1.5rem 0;
+    font-size: var(--font-size-sm);
+    color: var(--gray-500);
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.breadcrumb .separator {
+    margin: 0 0.5rem;
+    color: var(--gray-400);
+}
+
+.breadcrumb [aria-current="page"] {
+    color: var(--gray-700);
+    font-weight: 500;
+}
+
+/* Main Content */
+.main-content.pagina-login {
+    padding: 2rem 0 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px); /* Ajustar para que el contenido no quede muy arriba */
+    background: linear-gradient(135deg, var(--light-color) 0%, var(--gray-100) 100%); /* Fondo degradado suave */
+}
+
+.auth-section {
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--white);
+    border-radius: var(--radius-lg); /* Más redondeado */
+    box-shadow: var(--shadow-lg);
+    padding: 2.5rem;
+    border: 1px solid var(--gray-200);
+    position: relative; /* Para posibles elementos decorativos */
+    overflow: hidden; /* Asegura que los elementos decorativos no se desborden */
+}
+
+/* Elementos decorativos sutiles */
+.auth-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(var(--primary-color), 0.05); /* Círculo semitransparente */
+    border-radius: 50%;
+    filter: blur(30px);
+    z-index: 0;
+}
+
+.auth-section::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(var(--secondary-color), 0.05); /* Otro círculo semitransparente */
+    border-radius: 50%;
+    filter: blur(25px);
+    z-index: 0;
+}
+
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--gray-200);
+    position: relative; /* Para que el after se posicione correctamente */
+    z-index: 1; /* Asegura que las pestañas estén sobre los elementos decorativos */
+}
+
+.tab-button {
+    flex: 1;
+    padding: 1rem 0;
+    background: none;
+    border: none;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--gray-500);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tab-button.active {
+    color: var(--primary-color);
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.auth-panel {
+    display: none;
+    animation: fadeIn 0.5s ease-out forwards;
+    position: relative; /* Asegura que el contenido del panel esté sobre los elementos decorativos */
+    z-index: 1;
+}
+
+.auth-panel.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.auth-panel h2 {
+    font-size: var(--font-size-2xl);
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--dark-color);
+}
+
+.auth-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.auth-form input[type="email"],
+.auth-form input[type="password"],
+.auth-form input[type="text"] {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    transition: all 0.3s ease;
+}
+
+.auth-form input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+    outline: none;
+}
+
+.forgot-password-link {
+    display: block;
+    text-align: right;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    font-size: var(--font-size-sm);
+}
+
+/* Buttons (Copiar de Perfil.css para consistencia) */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-round);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  width: 100%; /* Botones de ancho completo en el formulario */
+  justify-content: center;
+}
+
+.primary-btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.primary-btn:hover {
+  background-color: var(--primary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background-color: var(--gray-100);
+  color: var(--gray-700);
+}
+
+.secondary-btn:hover {
+  background-color: var(--gray-200);
+}
+
+/* Footer (Copiar de Perfil.css para consistencia) */
+.footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 50px 0 20px;
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+.footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: var(--radius-round);
+}
+
+.footer-section p,
+.footer-section ul {
+    color: var(--gray-medium);
+    line-height: 1.8;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-list li {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gray-medium);
+}
+
+.contact-list a {
+  color: var(--gray-medium);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-list a:hover {
+  color: var(--light-color);
+}
+
+.contact-list i {
+    margin-right: 10px;
+    color: var(--secondary-color);
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: var(--light-color);
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-bottom p {
+    color: var(--gray-medium);
+}
+
+.footer-bottom .footer-links a {
+    color: var(--gray-medium);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom .footer-links a:hover {
+    color: var(--light-color);
+}
+
+/* Notification (Copiar de Perfil.css para consistencia) */
+.notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1001;
+  font-size: 0.95rem;
+  min-width: 250px;
+  text-align: center;
+}
+
+.notification.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.notification.success {
+  background-color: var(--success-color);
+}
+
+.notification.error {
+  background-color: var(--error-color);
+}
+
+.notification.info {
+  background-color: var(--secondary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .auth-section {
+        padding: 1.5rem;
+    }
+    .auth-tabs {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .tab-button {
+        font-size: var(--font-size-base);
+    }
+    .auth-panel h2 {
+        font-size: var(--font-size-xl);
+    }
+    /* Mobile nav (copiado de Perfil.css) */
+    .main-nav {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background-color: var(--white);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+        border-top: 1px solid var(--gray-medium);
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+    }
+    .main-nav.active {
+        display: block;
+    }
+    .main-nav .nav-list {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+    }
+    .nav-link {
+        width: 100%;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--gray-200);
+    }
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+    .auth-section {
+        padding: 1rem;
+    }
+    .auth-panel h2 {
+        font-size: var(--font-size-lg);
+    }
+}

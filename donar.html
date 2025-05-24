@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Donar | Rescue Paws</title>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="estilos/Donar.css" />
+    <link rel="stylesheet" href="estilos/chatbot.css" />
+
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-paw logo-icon"></i>
+                <span class="logo-text">Rescue Paws</span>
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                     <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li class="nav-item"><a href="adopcion.html" class="nav-link"><i class="fas fa-heart"></i> Adoptar</a></li>
+                    <li class="nav-item"><a href="donar.html" class="nav-link active"><i class="fas fa-hand-holding-heart"></i> Donar</a></li>
+                    <li class="nav-item"><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+                    <li class="nav-item"><a href="testimonios.html" class="nav-link"><i class="fas fa-comment"></i> Testimonios</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link"><i class="fas fa-user-circle"></i> Acceso</a></li>
+                    <li class="nav-item nav-profile">
+                        <a href="perfil.html" class="nav-link" aria-label="Perfil de usuario"> <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Perfil de usuario" class="profile-img" width="32" height="32" loading="lazy" />
+                        </a>
+                    </li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Abrir/cerrar menú móvil">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="donate-hero">
+        <div class="container">
+            <h1>Tu apoyo hace la diferencia</h1>
+            <p class="hero-subtitle">Cada donación nos ayuda a rescatar, rehabilitar y encontrar hogares amorosos para mascotas necesitadas.</p>
+            <a href="#donation-form-section" class="btn btn-primary">Donar Ahora</a>
+        </div>
+    </section>
+
+    <section id="donation-form-section" class="donation-form-section">
+        <div class="container">
+            <div class="donation-form-card">
+                <h2>Elige tu forma de ayudar</h2>
+                <form id="donation-form">
+                    <div class="form-group">
+                        <label for="amount">Monto de la donación:</label>
+                        <div class="amount-options">
+                            <button type="button" class="amount-option" data-amount="10">$10</button>
+                            <button type="button" class="amount-option" data-amount="25">$25</button>
+                            <button type="button" class="amount-option" data-amount="50">$50</button>
+                            <button type="button" class="amount-option" data-amount="100">$100</button>
+                            <div class="custom-amount-input">
+                                <span class="currency-symbol">$</span>
+                                <input type="number" id="amount" name="amount" placeholder="Otro monto" min="1" step="1" required class="form-control" />
+                                <button type="button" class="amount-option" id="custom-amount" data-amount="custom">Otro monto</button>
+                            </div>
+                            <div class="error-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="full-name">Nombre completo:</label>
+                        <input type="text" id="full-name" name="full-name" required class="form-control" />
+                        <div class="error-message"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" required class="form-control" />
+                        <div class="error-message"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">País:</label>
+                        <select id="country" name="country" class="form-control" required>
+                            <option value="">Selecciona tu país</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="Mexico">México</option>
+                            <option value="Spain">España</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Chile">Chile</option>
+                            <option value="Peru">Perú</option>
+                            <option value="USA">Estados Unidos</option>
+                            <option value="Canada">Canadá</option>
+                            </select>
+                        <div class="error-message"></div>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <h3>Método de pago:</h3>
+                        <div class="payment-tabs">
+                            <button type="button" class="payment-tab active" data-tab="credit-card">
+                                <i class="fas fa-credit-card"></i> Tarjeta de Crédito/Débito
+                            </button>
+                            <button type="button" class="payment-tab" data-tab="paypal">
+                                <i class="fab fa-paypal"></i> PayPal
+                            </button>
+                            <button type="button" class="payment-tab" data-tab="pse">
+                                <i class="fas fa-university"></i> PSE (Colombia)
+                            </button>
+                            <button type="button" class="payment-tab" data-tab="apple-pay">
+                                <i class="fab fa-apple-pay"></i> Apple Pay
+                            </button>
+                        </div>
+
+                        <div id="credit-card-content" class="payment-content active">
+                            <div class="form-group">
+                                <label for="card-number">Número de tarjeta:</label>
+                                <input type="text" id="card-number" name="card-number" placeholder="XXXX XXXX XXXX XXXX" required class="form-control" autocomplete="cc-number" />
+                                <div class="error-message"></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="card-expiry">Fecha de vencimiento (MM/AA):</label>
+                                    <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/AA" required class="form-control" autocomplete="cc-exp" />
+                                    <div class="error-message"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="card-cvc">CVC:</label>
+                                    <input type="text" id="card-cvc" name="card-cvc" placeholder="XXX" required class="form-control" autocomplete="cc-csc" />
+                                    <div class="error-message"></div>
+                                </div>
+                            </div>
+                             <button type="submit" class="btn btn-primary submit-btn">Donar con Tarjeta</button>
+                        </div>
+
+                        <div id="paypal-content" class="payment-content">
+                            <h3>Pagar con PayPal</h3>
+                            <p>Serás redirigido de forma segura al sitio web de PayPal para completar tu donación.</p>
+                            <button type="button" class="btn btn-secondary" id="paypal-button"><i class="fab fa-paypal"></i> Continuar con PayPal</button>
+                            <img src="https://www.paypalobjects.com/digitalassets/c/website/marketing/na/us/logos-badges/ppc_200x51.png" alt="[Image of PayPal logo]" style="max-width: 150px; margin-top: 15px;">
+                        </div>
+                        
+                         <div id="pse-content" class="payment-content">
+                            <h3>Pagar con PSE (Pagos Seguros en Línea)</h3>
+                            <p>Selecciona tu banco y serás redirigido a la plataforma PSE para finalizar el pago.</p>
+                            <div class="form-group">
+                                <label for="pse-bank">Selecciona tu Banco:</label>
+                                <select id="pse-bank" name="pse-bank" class="form-control" required>
+                                    <option value="">Selecciona un banco</option>
+                                    <option value="banco1">Banco de Colombia</option>
+                                    <option value="banco2">Bancolombia</option>
+                                    <option value="banco3">Davivienda</option>
+                                    <option value="banco4">BBVA</option>
+                                    <option value="banco5">Banco Popular</option>
+                                </select>
+                                <div class="error-message"></div>
+                            </div>
+                            <button type="button" class="btn btn-primary pse-btn" id="pse-button"><i class="fas fa-university"></i> Continuar con PSE</button>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Logo_PSE.svg/1200px-Logo_PSE.svg.png" alt="[Image of PSE logo]" style="max-width: 100px; margin-top: 15px;">
+                        </div>
+
+                        <div id="apple-pay-content" class="payment-content">
+                            <h3>Pagar con Apple Pay</h3>
+                            <p>Confirma tu donación de forma rápida y segura con Apple Pay.</p>
+                            <button type="button" class="apple-pay-button"></button>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="form-actions">
+                        <button type="submit" class="btn btn-primary submit-btn">Donar Ahora</button>
+                        <button type="button" class="btn btn-cancel">Cancelar</button>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="impact-section">
+        <div class="container">
+            <h2>¿Cómo ayuda tu donación?</h2>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <div class="icon-circle"><i class="fas fa-bone"></i></div>
+                    <h3>Alimento y Nutrición</h3>
+                    <p>Proporcionamos dietas balanceadas para mantener a nuestros animales sanos y fuertes.</p>
+                </div>
+                <div class="impact-item">
+                    <div class="icon-circle"><i class="fas fa-syringe"></i></div>
+                    <h3>Atención Veterinaria</h3>
+                    <p>Cubrimos vacunas, desparasitación, cirugías y tratamientos médicos urgentes.</p>
+                </div>
+                <div class="impact-item">
+                    <div class="icon-circle"><i class="fas fa-home"></i></div>
+                    <h3>Refugio y Cuidado</h3>
+                    <p>Ofrecemos un ambiente seguro y cálido, con áreas para jugar y descansar.</p>
+                </div>
+                <div class="impact-item">
+                    <div class="icon-circle"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>Programas de Adopción</h3>
+                    <p>Realizamos eventos y campañas para encontrar hogares amorosos para cada mascota.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stories-section">
+        <div class="container">
+            <h2>Historias de Éxito</h2>
+            <div class="story-grid">
+                <div class="story-card">
+                    <img src="https://images.unsplash.com/photo-1596492784531-fa011686e021?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="[Image of adopted dog smiling]">
+                    <h3>"La alegría de Max"</h3>
+                    <p>"Max llegó con miedo y desconfianza. Gracias a las donaciones, recibió el cuidado que necesitaba. Ahora, es el perro más feliz y juguetón de la familia."</p>
+                    <span>- Familia Pérez</span>
+                </div>
+                <div class="story-card">
+                    <img src="https://images.unsplash.com/photo-1548247000-8805f32997f7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="[Image of adopted cat in arms]">
+                    <h3>"La dulzura de Luna"</h3>
+                    <p>"Luna, una gatita abandonada, encontró en Rescue Paws su segunda oportunidad. Su recuperación fue posible gracias a la generosidad de los donantes. Ahora ronronea sin parar."</p>
+                    <span>- Sofía R.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Sé parte de la solución</h2>
+            <p>Cada pequeño gesto cuenta. ¡Únete a nuestra misión de salvar vidas!</p>
+            <a href="#donation-form-section" class="btn btn-primary">Donar Ahora</a>
+        </div>
+    </section>
+
+    <section class="transparency-section">
+        <div class="container">
+            <h2>Nuestra Transparencia</h2>
+            <p class="section-description">Nos comprometemos a ser transparentes con cada centavo. Aquí cómo se distribuyen tus donaciones:</p>
+            <div class="progress-charts">
+                <div class="progress-chart">
+                    <div class="progress-circle" data-current="70" data-target="100">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-background" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                        <span class="progress-text"></span>
+                    </div>
+                    <h4>Alimento y Cuidado</h4>
+                </div>
+                <div class="progress-chart">
+                    <div class="progress-circle" data-current="20" data-target="100">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-background" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                        <span class="progress-text"></span>
+                    </div>
+                    <h4>Veterinaria</h4>
+                </div>
+                <div class="progress-chart">
+                    <div class="progress-circle" data-current="10" data-target="100">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-background" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                        <span class="progress-text"></span>
+                    </div>
+                    <h4>Operación</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Rescue Paws</h4>
+                    <p>Rescatando, rehabilitando y reubicando mascotas necesitadas desde 2015.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navegación</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="adopcion.html">Adoptar</a></li>
+                        <li><a href="donar.html">Donar</a></li>
+                        <li><a href="eventos.html">Eventos</a></li>
+                        <li><a href="testimonios.html">Testimonios</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-phone"></i> <a href="tel:+525512345678">+52 55 1234 5678</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:hola@rescuepaws.org">hola@rescuepaws.org</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Ciudad de México</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Enlace a Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Enlace a Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Enlace a Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Enlace a YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Rescue Paws. Todos los derechos reservados.</p>
+                <div class="footer-links">
+                    <a href="#">Términos</a> |
+                    <a href="#">Privacidad</a> |
+                    <a href="#">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="donation-modal" style="display:none;">
+        <div class="modal-container">
+            <div class="modal-header">
+                <i class="fas fa-check-circle"></i>
+                <h2>¡Gracias por tu donación!</h2>
+                <button class="close-modal" aria-label="Cerrar modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Tu aporte es muy valioso para nosotros y las mascotas que ayudamos.</p>
+                <p>¡Juntos hacemos la diferencia!</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="app-notification"></div>
+
+<div class="chatbot-container" role="region" aria-label="Chatbot de adopción PawFriend">
+        <button class="chatbot-toggle" aria-expanded="false" aria-label="Abrir chatbot de adopción">
+            <div class="chatbot-avatar">
+                <i class="fas fa-paw avatar-icon" aria-hidden="true"></i>
+                <div class="notification-badge hidden" aria-hidden="true">3</div>
+            </div>
+            <span class="sr-only">Chatbot de Adopción</span>
+        </button>
+        
+        <div class="chatbot-window hidden" role="dialog" aria-modal="true">
+            <div class="chatbot-header">
+                <div class="header-content">
+                    <i class="fas fa-paw header-avatar-icon" aria-hidden="true"></i>
+                    <div>
+                        <h2>PawFriend</h2>
+                        <p class="status"><span class="status-indicator" aria-hidden="true"></span> En línea</p>
+                    </div>
+                </div>
+                <button class="close-btn" aria-label="Cerrar chatbot">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" role="log" aria-live="polite">
+                </div>
+            
+            <div class="chatbot-input">
+                <form id="chatbot-form" class="chatbot-form" novalidate>
+                    <div class="input-group">
+                        <input type="text" id="user-input" placeholder="Escribe tu mensaje..." aria-label="Escribe tu mensaje" required>
+                        <button type="submit" class="send-btn" aria-label="Enviar mensaje">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="accessibility-options">
+                        <button type="button" id="voice-btn" class="accessibility-btn voice-btn" aria-label="Usar reconocimiento de voz">
+                            <i class="fas fa-microphone" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn text-size-btn" aria-label="Cambiar tamaño de texto">
+                            <i class="fas fa-text-height" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn high-contrast-btn" aria-label="Alternar alto contraste">
+                            <i class="fas fa-adjust" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn clear-btn" aria-label="Limpiar conversación">
+                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn restart-btn" aria-label="Reiniciar chatbot">
+                            <i class="fas fa-redo-alt" aria-hidden="true"></i>
+                        </button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/chatbot.js" defer></script>
+
+    <div id="chatbot-wrapper"></div>
+
+    <script src="scripts/donar.js"></script>
+</body>
+</html>

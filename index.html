@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rescue Paws - Adopta un Amigo Peludo</title>
+  <meta name="description" content="Rescue Paws - Rescatamos, rehabilitamos y reubicamos mascotas necesitadas. Encuentra a tu compañero perfecto para adoptar.">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="estilos/styles.css" />
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- CSS del chatbot -->
+<link rel="stylesheet" href="estilos/chatbot.css">
+<!-- Fuentes adicionales si las necesitas -->
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-paw logo-icon" aria-hidden="true"></i>
+        <span class="logo-text">Rescue Paws</span>
+      </a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page"><i class="fas fa-home"></i> Inicio</a></li>
+          <li class="nav-item"><a href="adopcion.html" class="nav-link"><i class="fas fa-heart"></i> Adoptar</a></li>
+          <li class="nav-item"><a href="donar.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donar</a></li>
+          <li class="nav-item"><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+          <li class="nav-item"><a href="testimonios.html" class="nav-link"><i class="fas fa-comment"></i> Testimonios</a></li>
+          <li class="nav-item"><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+          <li class="nav-item"><a href="login.html" class="nav-link active"><i class="fas fa-user-circle"></i> Acceso</a></li>
+          <li class="nav-item nav-profile">
+            <a href="perfil.html" class="nav-link" aria-label="Perfil de usuario">
+              <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                   alt="Perfil de usuario" class="profile-img" width="32" height="32" loading="lazy">
+            </a>
+          </li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Abrir/cerrar menú móvil">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-content container">
+      <h1 id="hero-heading"><i class="fas fa-bullseye"></i> Nuestra Misión</h1>
+      <p class="hero-text">Rescatamos, rehabilitamos y reubicamos mascotas necesitadas. ¡Únete para cambiar vidas!</p>
+      <div class="hero-buttons">
+        <a href="adopcion.html" class="btn btn-primary">
+          <i class="fas fa-paw"></i> Adoptar
+        </a>
+        <a href="donar.html" class="btn btn-secondary">
+          <i class="fas fa-hand-holding-heart"></i> Donar
+        </a>
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
+  </section>
+
+  <!-- Estadísticas -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <i class="fas fa-paw"></i>
+          <div class="stat-number" data-count="1200">0</div>
+          <div class="stat-label">Mascotas Rescatadas</div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-home"></i>
+          <div class="stat-number" data-count="850">0</div>
+          <div class="stat-label">Hogares Felices</div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-heart"></i>
+          <div class="stat-number" data-count="95">0</div>
+          <div class="stat-label">Porcentaje de Éxito</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mascotas destacadas -->
+  <section class="featured-pets" aria-labelledby="featured-pets-heading">
+    <div class="container">
+      <h2 id="featured-pets-heading"><i class="fas fa-star"></i> Mascotas Destacadas</h2>
+      <p class="section-subtitle">Estos adorables compañeros están buscando un hogar amoroso</p>
+      
+      <div class="filter-pets">
+        <ul class="filter-list">
+          <li class="filter-item"><button class="filter-button active" data-filter="all" aria-pressed="true">Todos</button></li>
+          <li class="filter-item"><button class="filter-button" data-filter="dog" aria-pressed="false">Perros</button></li>
+          <li class="filter-item"><button class="filter-button" data-filter="cat" aria-pressed="false">Gatos</button></li>
+          <li class="filter-item"><button class="filter-button" data-filter="other" aria-pressed="false">Otros</button></li>
+        </ul>
+      </div>
+      
+      <div class="pet-cards">
+        <!-- Card 1 -->
+        <article class="pet-card" data-category="dog">
+          <div class="pet-image">
+            <img src="https://images.pexels.com/photos/2023384/pexels-photo-2023384.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                 alt="Max, un perro labrador buscando hogar" width="340" height="240" loading="lazy">
+            <div class="pet-badge">Disponible</div>
+          </div>
+          <div class="pet-info">
+            <h3>Max</h3>
+            <p class="pet-breed">Labrador • 2 años</p>
+            <p class="pet-description">Max es un perro juguetón y cariñoso que adora los paseos y jugar a buscar la pelota.</p>
+            <div class="pet-traits">
+              <span class="trait"><i class="fas fa-dog"></i> Juguetón</span>
+              <span class="trait"><i class="fas fa-heart"></i> Cariñoso</span>
+            </div>
+            <a href="Animales/max.html" class="btn btn-pet"><i class="fas fa-heart"></i> Conocer a Max</a>
+          </div>
+        </article>
+        
+        <!-- Card 2 -->
+        <article class="pet-card" data-category="cat">
+          <div class="pet-image">
+            <img src="https://images.pexels.com/photos/2071882/pexels-photo-2071882.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                 alt="Luna, una gata buscando hogar" width="340" height="240" loading="lazy">
+            <div class="pet-badge">Disponible</div>
+          </div>
+          <div class="pet-info">
+            <h3>Luna</h3>
+            <p class="pet-breed">Gata • 1 año</p>
+            <p class="pet-description">Luna es una gata tranquila que disfruta de las siestas al sol y los mimos suaves.</p>
+            <div class="pet-traits">
+              <span class="trait"><i class="fas fa-cat"></i> Tranquila</span>
+              <span class="trait"><i class="fas fa-moon"></i> Cariñosa</span>
+            </div>
+            <a href="Animales/luna.html" class="btn btn-pet"><i class="fas fa-heart"></i> Conocer a Luna</a>
+          </div>
+        </article>
+        
+        <!-- Card 3 -->
+        <article class="pet-card" data-category="dog">
+          <div class="pet-image">
+            <img src="https://images.pexels.com/photos/551628/pexels-photo-551628.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                 alt="Rocky, un perro bulldog buscando hogar" width="340" height="240" loading="lazy">
+            <div class="pet-badge">Reservado</div>
+          </div>
+          <div class="pet-info">
+            <h3>Rocky</h3>
+            <p class="pet-breed">Bulldog • 3 años</p>
+            <p class="pet-description">Rocky es un perro leal y protector que se lleva bien con niños y otros animales.</p>
+            <div class="pet-traits">
+              <span class="trait"><i class="fas fa-shield-alt"></i> Protector</span>
+              <span class="trait"><i class="fas fa-child"></i> Bueno con niños</span>
+            </div>
+            <a href="Animales/rocky.html" class="btn btn-pet"><i class="fas fa-heart"></i> Conocer a Rocky</a>
+          </div>
+        </article>
+      </div>
+      
+      <div class="view-all-link">
+        <a href="adopcion.html" class="btn btn-outline">
+          <i class="fas fa-paw"></i> Ver todas las mascotas
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proceso de adopción -->
+  <section class="adoption-process">
+    <div class="container">
+      <h2><i class="fas fa-list-ol"></i> Nuestro Proceso de Adopción</h2>
+      <p class="section-subtitle">Cómo encontrar a tu compañero perfecto</p>
+      
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <i class="fas fa-search"></i>
+          <h3>Explora</h3>
+          <p>Busca entre nuestras mascotas disponibles y encuentra a tu compañero ideal.</p>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <i class="fas fa-file-alt"></i>
+          <h3>Solicitud</h3>
+          <p>Completa nuestro formulario de adopción para iniciar el proceso.</p>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <i class="fas fa-handshake"></i>
+          <h3>Entrevista</h3>
+          <p>Nos reuniremos contigo para asegurarnos de que sea la pareja perfecta.</p>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <i class="fas fa-home"></i>
+          <h3>Hogar</h3>
+          <p>¡Lleva a tu nuevo amigo a casa y comienza una vida juntos!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios destacados -->
+  <section class="featured-testimonials">
+    <div class="container">
+      <h2><i class="fas fa-comment-dots"></i> Historias de Éxito</h2>
+      <p class="section-subtitle">Lo que dicen las familias que han adoptado con nosotros</p>
+      
+      <div class="testimonials-grid">
+        <article class="testimonial-card">
+          <div class="testimonial-image">
+            <img src="https://images.pexels.com/photos/774731/pexels-photo-774731.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                 alt="Familia con su gato adoptado" width="340" height="240" loading="lazy">
+          </div>
+          <div class="testimonial-content">
+            <h3>Luna: Una Segunda Oportunidad</h3>
+            <p class="adopted-pet-info">Adoptado: Luna (Gata)</p>
+            <blockquote>
+              <p>"La historia de Luna nos inspiró. Ahora es una miembro amada de nuestra familia que llena nuestro hogar de alegría."</p>
+              <footer>- Familia Gómez</footer>
+            </blockquote>
+            <a href="testimonios.html" class="btn btn-outline">Más historias</a>
+          </div>
+        </article>
+        
+        <article class="testimonial-card">
+          <div class="testimonial-image">
+            <img src="https://images.pexels.com/photos/2023384/pexels-photo-2023384.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                 alt="Hombre con su perro adoptado" width="340" height="240" loading="lazy">
+          </div>
+          <div class="testimonial-content">
+            <h3>Max: Del Refugio a la Familia</h3>
+            <p class="adopted-pet-info">Adoptado: Max (Perro)</p>
+            <blockquote>
+              <p>"Max está prosperando! Estamos muy agradecidos por el cuidado y el amor que recibió antes de unirse a nosotros."</p>
+              <footer>- Los Pérez</footer>
+            </blockquote>
+            <a href="testimonios.html" class="btn btn-outline">Más historias</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>¿Listo para cambiar una vida?</h2>
+        <p>Ya sea que quieras adoptar, ser hogar temporal o apoyar nuestra causa, cada ayuda marca la diferencia.</p>
+        <div class="cta-buttons">
+          <a href="adopcion.html" class="btn btn-primary">Adoptar</a>
+          <a href="donar.html" class="btn btn-secondary">Donar</a>
+          <a href="contacto.html" class="btn btn-outline">Contactarnos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <i class="fas fa-paw"></i>
+            <span>Rescue Paws</span>
+          </div>
+          <p>Dedicados a rescatar, rehabilitar y encontrar hogares amorosos para mascotas necesitadas.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Enlaces rápidos</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="adopcion.html">Adoptar</a></li>
+            <li><a href="donar.html">Donar</a></li>
+            <li><a href="eventos.html">Eventos</a></li>
+            <li><a href="testimonios.html">Testimonios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <address>
+            <p><i class="fas fa-map-marker-alt"></i> Calle Mascotas 123, Ciudad</p>
+            <p><i class="fas fa-phone"></i> +123 456 7890</p>
+            <p><i class="fas fa-envelope"></i> info@rescuepaws.org</p>
+          </address>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Horario</h4>
+          <p><i class="fas fa-calendar-alt"></i> Lunes a Viernes: 9am - 6pm</p>
+          <p><i class="fas fa-calendar-alt"></i> Sábados: 10am - 4pm</p>
+          <p><i class="fas fa-calendar-alt"></i> Domingos: Cerrado</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Rescue Paws. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón volver arriba -->
+  <button class="back-to-top-btn" aria-label="Volver arriba">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Script principal -->
+  <script src="scripts/script.js" defer></script>
+
+<div class="chatbot-container" role="region" aria-label="Chatbot de adopción PawFriend">
+        <button class="chatbot-toggle" aria-expanded="false" aria-label="Abrir chatbot de adopción">
+            <div class="chatbot-avatar">
+                <i class="fas fa-paw avatar-icon" aria-hidden="true"></i>
+                <div class="notification-badge hidden" aria-hidden="true">3</div>
+            </div>
+            <span class="sr-only">Chatbot de Adopción</span>
+        </button>
+        
+        <div class="chatbot-window hidden" role="dialog" aria-modal="true">
+            <div class="chatbot-header">
+                <div class="header-content">
+                    <i class="fas fa-paw header-avatar-icon" aria-hidden="true"></i>
+                    <div>
+                        <h2>PawFriend</h2>
+                        <p class="status"><span class="status-indicator" aria-hidden="true"></span> En línea</p>
+                    </div>
+                </div>
+                <button class="close-btn" aria-label="Cerrar chatbot">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" role="log" aria-live="polite">
+                </div>
+            
+            <div class="chatbot-input">
+                <form id="chatbot-form" class="chatbot-form" novalidate>
+                    <div class="input-group">
+                        <input type="text" id="user-input" placeholder="Escribe tu mensaje..." aria-label="Escribe tu mensaje" required>
+                        <button type="submit" class="send-btn" aria-label="Enviar mensaje">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="accessibility-options">
+                        <button type="button" id="voice-btn" class="accessibility-btn voice-btn" aria-label="Usar reconocimiento de voz">
+                            <i class="fas fa-microphone" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn text-size-btn" aria-label="Cambiar tamaño de texto">
+                            <i class="fas fa-text-height" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn high-contrast-btn" aria-label="Alternar alto contraste">
+                            <i class="fas fa-adjust" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn clear-btn" aria-label="Limpiar conversación">
+                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn restart-btn" aria-label="Reiniciar chatbot">
+                            <i class="fas fa-redo-alt" aria-hidden="true"></i>
+                        </button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/chatbot.js" defer></script>
+</body>
+</html>

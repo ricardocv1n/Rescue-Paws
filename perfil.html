@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil de Usuario | Rescue Paws</title>
+    <meta name="description" content="Administra tu perfil en Rescue Paws: ve tus adopciones, guarda favoritos, actualiza tu información y gestiona tu actividad.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="estilos/Perfil.css" />
+    <script src="scripts/Perfil.js" defer></script>
+    <link rel="canonical" href="https://www.rescuepaws.org/perfil" />
+    <link rel="stylesheet" href="estilos/chatbot.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="Ir a inicio">
+                <i class="fas fa-paw logo-icon"></i>
+                <span class="logo-text">Rescue Paws</span>
+            </a>
+            <nav class="main-nav" aria-label="Navegación principal">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li class="nav-item"><a href="adopcion.html" class="nav-link"><i class="fas fa-heart"></i> Adoptar</a></li>
+                    <li class="nav-item"><a href="donar.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donar</a></li>
+                    <li class="nav-item"><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+                    <li class="nav-item"><a href="testimonios.html" class="nav-link"><i class="fas fa-comment"></i> Testimonios</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link active"><i class="fas fa-user-circle"></i> Acceso</a></li>
+                    <li class="nav-item nav-profile">
+                        <a href="perfil.html" class="nav-link active" aria-label="Perfil de usuario">
+                            <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                                 alt="Perfil de usuario" 
+                                 class="profile-img" 
+                                 width="32" 
+                                 height="32" 
+                                 loading="lazy" />
+                        </a>
+                    </li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Abrir/cerrar menú móvil" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content pagina-perfil">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <a href="index.html">Inicio</a>
+                <span class="separator">/</span>
+                <span aria-current="page">Perfil</span>
+            </nav>
+
+            <div class="profile-grid">
+                <!-- Sección de información del perfil -->
+                <section class="profile-header" aria-labelledby="profile-heading">
+                    <div class="profile-card">
+                        <div class="profile-image-container">
+                            <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                                 alt="Foto de perfil de Ana Pérez" 
+                                 class="profile-image"
+                                 width="150" 
+                                 height="150" 
+                                 loading="lazy">
+                            <button class="edit-photo-btn" aria-label="Cambiar foto de perfil">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <div class="profile-info">
+                            <h1 id="profile-heading">Ana Pérez</h1>
+                            <div class="profile-meta">
+                                <p><i class="fas fa-map-marker-alt"></i> Montería, Córdoba</p>
+                                <p><i class="fas fa-envelope"></i> ana.perez@email.com</p>
+                                <p><i class="fas fa-phone"></i> +57 300 123 4567</p>
+                            </div>
+                            <div class="profile-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">3</span>
+                                    <span class="stat-label">Adopciones</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">12</span>
+                                    <span class="stat-label">Favoritos</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">5</span>
+                                    <span class="stat-label">Eventos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección de navegación del perfil -->
+                <nav class="profile-navigation" aria-label="Navegación del perfil">
+                    <ul class="nav-tabs">
+                        <li class="nav-tab active" data-tab="dashboard">
+                            <a href="#dashboard" aria-selected="true">
+                                <i class="fas fa-home"></i>
+                                <span>Resumen</span>
+                            </a>
+                        </li>
+                        <li class="nav-tab" data-tab="adoptions">
+                            <a href="#adoptions" aria-selected="false">
+                                <i class="fas fa-paw"></i>
+                                <span>Mis Adopciones</span>
+                            </a>
+                        </li>
+                        <li class="nav-tab" data-tab="favorites">
+                            <a href="#favorites" aria-selected="false">
+                                <i class="fas fa-heart"></i>
+                                <span>Favoritos</span>
+                            </a>
+                        </li>
+                        <li class="nav-tab" data-tab="events">
+                            <a href="#events" aria-selected="false">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>Mis Eventos</span>
+                            </a>
+                        </li>
+                        <li class="nav-tab" data-tab="settings">
+                            <a href="#settings" aria-selected="false">
+                                <i class="fas fa-cog"></i>
+                                <span>Configuración</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Contenido dinámico del perfil -->
+                <div class="profile-content">
+                    <!-- Panel de Resumen (Dashboard) -->
+                    <section id="dashboard" class="tab-panel active" aria-labelledby="dashboard-heading">
+                        <h2 id="dashboard-heading" class="visually-hidden">Resumen</h2>
+                        
+                        <div class="dashboard-grid">
+                            <!-- Actividad reciente -->
+                            <div class="recent-activity">
+                                <h3>Actividad Reciente</h3>
+                                <ul class="activity-list">
+                                    <li class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-comment-dots"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p>Comentaste en la historia de <a href="#" class="activity-link">"Rocky"</a></p>
+                                            <small class="activity-date">Hace 2 días - 13 de Mayo, 2025</small>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p>Guardaste a <a href="#" class="activity-link">"Bella"</a> en tus favoritos</p>
+                                            <small class="activity-date">Hace 5 días - 10 de Mayo, 2025</small>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p>Contactaste sobre <a href="#" class="activity-link">"Max"</a> para adopción</p>
+                                            <small class="activity-date">Hace 1 semana - 8 de Mayo, 2025</small>
+                                        </div>
+                                    </li>
+                                    <li class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p>Completaste tu perfil de adopción</p>
+                                            <small class="activity-date">Hace 2 semanas - 1 de Mayo, 2025</small>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <a href="#" class="view-all-link">Ver toda la actividad <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            
+                            <!-- Próximos eventos -->
+                            <div class="upcoming-events">
+                                <h3>Próximos Eventos</h3>
+                                <div class="event-card">
+                                    <div class="event-date">
+                                        <span class="event-day">20</span>
+                                        <span class="event-month">May</span>
+                                    </div>
+                                    <div class="event-details">
+                                        <h4><a href="#">Jornada de Adopción</a></h4>
+                                        <p><i class="fas fa-map-marker-alt"></i> Parque Principal, Montería</p>
+                                        <p><i class="fas fa-clock"></i> 10:00 AM - 4:00 PM</p>
+                                    </div>
+                                    <button class="event-reminder">
+                                        <i class="fas fa-bell"></i>
+                                    </button>
+                                </div>
+                                <div class="event-card">
+                                    <div class="event-date">
+                                        <span class="event-day">28</span>
+                                        <span class="event-month">May</span>
+                                    </div>
+                                    <div class="event-details">
+                                        <h4><a href="#">Taller de Cuidado Canino</a></h4>
+                                        <p><i class="fas fa-map-marker-alt"></i> Centro Comunitario</p>
+                                        <p><i class="fas fa-clock"></i> 2:00 PM - 5:00 PM</p>
+                                    </div>
+                                    <button class="event-reminder">
+                                        <i class="fas fa-bell"></i>
+                                    </button>
+                                </div>
+                                <a href="eventos.html" class="view-all-link">Ver todos los eventos <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            
+                            <!-- Progreso de adopción -->
+                            <div class="adoption-progress">
+                                <h3>Tu Proceso de Adopción</h3>
+                                <div class="progress-container">
+                                    <div class="progress-steps">
+                                        <div class="step completed">
+                                            <div class="step-icon">
+                                                <i class="fas fa-check"></i>
+                                            </div>
+                                            <p>Registro</p>
+                                        </div>
+                                        <div class="step completed">
+                                            <div class="step-icon">
+                                                <i class="fas fa-check"></i>
+                                            </div>
+                                            <p>Entrevista</p>
+                                        </div>
+                                        <div class="step active">
+                                            <div class="step-icon">
+                                                <i class="fas fa-home"></i>
+                                            </div>
+                                            <p>Visita al Hogar</p>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-icon">
+                                                <i class="fas fa-paw"></i>
+                                            </div>
+                                            <p>Finalización</p>
+                                        </div>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                                <p class="progress-note">Estás en la etapa de visita al hogar para la adopción de <strong>Luna</strong>.</p>
+                                <button class="btn primary-btn">Ver detalles</button>
+                            </div>
+                            
+                            <!-- Mascotas adoptadas -->
+                            <div class="adopted-pets">
+                                <h3>Tus Mascotas Adoptadas</h3>
+                                <div class="pets-grid">
+                                    <div class="pet-card">
+                                        <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                                             alt="Foto de Buddy" 
+                                             class="pet-image">
+                                        <div class="pet-info">
+                                            <h4>Buddy</h4>
+                                            <p>Adoptado el 15/03/2025</p>
+                                            <div class="pet-actions">
+                                                <button class="icon-btn" aria-label="Ver historia de Buddy">
+                                                    <i class="fas fa-book-open"></i>
+                                                </button>
+                                                <button class="icon-btn" aria-label="Compartir historia">
+                                                    <i class="fas fa-share-alt"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pet-card">
+                                        <img src="https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                                             alt="Foto de Mimi" 
+                                             class="pet-image">
+                                        <div class="pet-info">
+                                            <h4>Mimi</h4>
+                                            <p>Adoptado el 22/08/2024</p>
+                                            <div class="pet-actions">
+                                                <button class="icon-btn" aria-label="Ver historia de Mimi">
+                                                    <i class="fas fa-book-open"></i>
+                                                </button>
+                                                <button class="icon-btn" aria-label="Compartir historia">
+                                                    <i class="fas fa-share-alt"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="testimonios.html" class="view-all-link">Compartir tu historia <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Panel de Adopciones -->
+                    <section id="adoptions" class="tab-panel" aria-labelledby="adoptions-heading" hidden>
+                        <h2 id="adoptions-heading">Mis Adopciones</h2>
+                        <div class="adoptions-list">
+                            <!-- Contenido dinámico se cargará aquí -->
+                            <div class="empty-state">
+                                <i class="fas fa-paw"></i>
+                                <h3>No tienes adopciones recientes</h3>
+                                <p>Cuando completes un proceso de adopción, aparecerá aquí.</p>
+                                <a href="adopcion.html" class="btn primary-btn">Ver mascotas disponibles</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Panel de Favoritos -->
+                    <section id="favorites" class="tab-panel" aria-labelledby="favorites-heading" hidden>
+                        <h2 id="favorites-heading">Mis Favoritos</h2>
+                        <div class="favorites-grid">
+                            <!-- Contenido dinámico se cargará aquí -->
+                            <div class="empty-state">
+                                <i class="fas fa-heart"></i>
+                                <h3>No tienes mascotas favoritas</h3>
+                                <p>Guarda tus mascotas favoritas haciendo clic en el corazón en las páginas de adopción.</p>
+                                <a href="adopcion.html" class="btn primary-btn">Explorar mascotas</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Panel de Eventos -->
+                    <section id="events" class="tab-panel" aria-labelledby="events-heading" hidden>
+                        <h2 id="events-heading">Mis Eventos</h2>
+                        <div class="events-list">
+                            <!-- Contenido dinámico se cargará aquí -->
+                            <div class="empty-state">
+                                <i class="fas fa-calendar-alt"></i>
+                                <h3>No tienes eventos próximos</h3>
+                                <p>Cuando te registres en un evento, aparecerá aquí.</p>
+                                <a href="eventos.html" class="btn primary-btn">Ver próximos eventos</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Panel de Configuración -->
+                    <section id="settings" class="tab-panel" aria-labelledby="settings-heading" hidden>
+                        <h2 id="settings-heading">Configuración de Cuenta</h2>
+                        <form class="settings-form">
+                            <div class="form-section">
+                                <h3>Información Personal</h3>
+                                <div class="form-group">
+                                    <label for="settings-name">Nombre Completo</label>
+                                    <input type="text" id="settings-name" value="Ana Pérez">
+                                </div>
+                                <div class="form-group">
+                                    <label for="settings-email">Correo Electrónico</label>
+                                    <input type="email" id="settings-email" value="ana.perez@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="settings-phone">Teléfono</label>
+                                    <input type="tel" id="settings-phone" value="+57 300 123 4567">
+                                </div>
+                                <div class="form-group">
+                                    <label for="settings-address">Dirección</label>
+                                    <textarea id="settings-address" rows="3">Calle 123 #45-67, Montería, Córdoba</textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h3>Preferencias</h3>
+                                <div class="form-group">
+                                    <label>Notificaciones</label>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="notif-email" checked>
+                                        <label for="notif-email">Recibir notificaciones por email</label>
+                                    </div>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="notif-sms" checked>
+                                        <label for="notif-sms">Recibir notificaciones por SMS</label>
+                                    </div>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="notif-events" checked>
+                                        <label for="notif-events">Notificarme sobre eventos</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pref-pet-type">Tipo de mascota preferida</label>
+                                    <select id="pref-pet-type">
+                                        <option value="dog">Perros</option>
+                                        <option value="cat" selected>Gatos</option>
+                                        <option value="both">Ambos</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h3>Seguridad</h3>
+                                <div class="form-group">
+                                    <label for="current-password">Contraseña Actual</label>
+                                    <input type="password" id="current-password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-password">Nueva Contraseña</label>
+                                    <input type="password" id="new-password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">Confirmar Contraseña</label>
+                                    <input type="password" id="confirm-password">
+                                </div>
+                                <button type="button" class="btn secondary-btn">Cambiar Contraseña</button>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn primary-btn">Guardar Cambios</button>
+                                <button type="button" class="btn danger-btn">Eliminar Cuenta</button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Rescue Paws</h4>
+                    <p>Dedicados a rescatar, rehabilitar y encontrar hogares amorosos para mascotas necesitadas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="contact-list">
+                        <li class="contact-item"><i class="fas fa-phone"></i> <a href="tel:+573001234567">+57 300 123 4567</a></li>
+                        <li class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:info@rescuepaws.co">info@rescuepaws.co</a></li>
+                        <li class="contact-item"><i class="fas fa-map-marker-alt"></i> Montería, Córdoba</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rescue Paws. Todos los derechos reservados.</p>
+                <nav class="footer-nav" aria-label="Navegación secundaria">
+                    <ul>
+                        <li><a href="privacidad.html">Política de Privacidad</a></li>
+                        <li><a href="terminos.html">Términos de Servicio</a></li>
+                        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+   <div id="chatbot-wrapper"></div>
+
+<div class="chatbot-container" role="region" aria-label="Chatbot de adopción PawFriend">
+        <button class="chatbot-toggle" aria-expanded="false" aria-label="Abrir chatbot de adopción">
+            <div class="chatbot-avatar">
+                <i class="fas fa-paw avatar-icon" aria-hidden="true"></i>
+                <div class="notification-badge hidden" aria-hidden="true">3</div>
+            </div>
+            <span class="sr-only">Chatbot de Adopción</span>
+        </button>
+        
+        <div class="chatbot-window hidden" role="dialog" aria-modal="true">
+            <div class="chatbot-header">
+                <div class="header-content">
+                    <i class="fas fa-paw header-avatar-icon" aria-hidden="true"></i>
+                    <div>
+                        <h2>PawFriend</h2>
+                        <p class="status"><span class="status-indicator" aria-hidden="true"></span> En línea</p>
+                    </div>
+                </div>
+                <button class="close-btn" aria-label="Cerrar chatbot">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" role="log" aria-live="polite">
+                </div>
+            
+            <div class="chatbot-input">
+                <form id="chatbot-form" class="chatbot-form" novalidate>
+                    <div class="input-group">
+                        <input type="text" id="user-input" placeholder="Escribe tu mensaje..." aria-label="Escribe tu mensaje" required>
+                        <button type="submit" class="send-btn" aria-label="Enviar mensaje">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="accessibility-options">
+                        <button type="button" id="voice-btn" class="accessibility-btn voice-btn" aria-label="Usar reconocimiento de voz">
+                            <i class="fas fa-microphone" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn text-size-btn" aria-label="Cambiar tamaño de texto">
+                            <i class="fas fa-text-height" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn high-contrast-btn" aria-label="Alternar alto contraste">
+                            <i class="fas fa-adjust" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn clear-btn" aria-label="Limpiar conversación">
+                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="accessibility-btn restart-btn" aria-label="Reiniciar chatbot">
+                            <i class="fas fa-redo-alt" aria-hidden="true"></i>
+                        </button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/chatbot.js" defer></script>
+    <script src="scripts/perfil.js"></script>
+
+
+    
+</body>
+</html>

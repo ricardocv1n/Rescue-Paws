@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión o Registrarse | Rescue Paws</title>
+    <meta name="description" content="Inicia sesión o crea una nueva cuenta en Rescue Paws para gestionar tus adopciones, favoritos y eventos.">
+    <meta name="keywords" content="iniciar sesión, registrarse, cuenta de usuario, adopción de mascotas, voluntariado">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="estilos/login.css" />
+    <link rel="stylesheet" href="estilos/chatbot.css" />
+    <link rel="canonical" href="https://www.rescuepaws.org/login" />
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="Ir a inicio">
+                <i class="fas fa-paw logo-icon"></i>
+                <span class="logo-text">Rescue Paws</span>
+            </a>
+            <nav class="main-nav" aria-label="Navegación principal">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li class="nav-item"><a href="adopcion.html" class="nav-link"><i class="fas fa-heart"></i> Adoptar</a></li>
+                    <li class="nav-item"><a href="donar.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donar</a></li>
+                    <li class="nav-item"><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+                    <li class="nav-item"><a href="testimonios.html" class="nav-link"><i class="fas fa-comment"></i> Testimonios</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+                    <li class="nav-item"><a href="login.html" class="nav-link active"><i class="fas fa-user-circle"></i> Acceso</a></li>
+                    <li class="nav-item nav-profile">
+                        <a href="perfil.html" class="nav-link" aria-label="Perfil de usuario">
+                            <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                                 alt="Perfil de usuario" 
+                                 class="profile-img" 
+                                 width="32" 
+                                 height="32" 
+                                 loading="lazy" />
+                        </a>
+                    </li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Abrir/cerrar menú móvil" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content pagina-login">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <a href="index.html">Inicio</a>
+                <span class="separator">/</span>
+                <span aria-current="page">Acceso</span>
+            </nav>
+
+            <section class="auth-section">
+                <div class="auth-container">
+                    <div class="auth-tabs">
+                        <button class="tab-button active" data-tab="login">Iniciar Sesión</button>
+                        <button class="tab-button" data-tab="register">Registrarse</button>
+                    </div>
+
+                    <div id="login-panel" class="auth-panel active">
+                        <h2>Bienvenido de Nuevo</h2>
+                        <form id="login-form" class="auth-form">
+                            <div class="form-group">
+                                <label for="login-email">Correo Electrónico</label>
+                                <input type="email" id="login-email" placeholder="tu@email.com" required aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password">Contraseña</label>
+                                <input type="password" id="login-password" placeholder="********" required aria-required="true">
+                            </div>
+                            <a href="#" class="forgot-password-link">¿Olvidaste tu contraseña?</a>
+                            <button type="submit" class="btn primary-btn">Iniciar Sesión</button>
+                        </form>
+                    </div>
+
+                    <div id="register-panel" class="auth-panel">
+                        <h2>Crea tu Cuenta</h2>
+                        <form id="register-form" class="auth-form">
+                            <div class="form-group">
+                                <label for="register-name">Nombre Completo</label>
+                                <input type="text" id="register-name" placeholder="Tu nombre" required aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="register-email">Correo Electrónico</label>
+                                <input type="email" id="register-email" placeholder="tu@email.com" required aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="register-password">Contraseña</label>
+                                <input type="password" id="register-password" placeholder="Mín. 8 caracteres" required aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="register-confirm-password">Confirmar Contraseña</label>
+                                <input type="password" id="register-confirm-password" placeholder="Repite tu contraseña" required aria-required="true">
+                            </div>
+                            <button type="submit" class="btn primary-btn">Registrarse</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Rescue Paws</h4>
+                    <p>Dedicados a rescatar, rehabilitar y encontrar hogares amorosos para mascotas necesitadas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="contact-list">
+                        <li class="contact-item"><i class="fas fa-phone"></i> <a href="tel:+573001234567">+57 300 123 4567</a></li>
+                        <li class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:info@rescuepaws.co">info@rescuepaws.co</a></li>
+                        <li class="contact-item"><i class="fas fa-map-marker-alt"></i> Montería, Córdoba</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rescue Paws. Todos los derechos reservados.</p>
+                <nav class="footer-nav" aria-label="Navegación secundaria">
+                    <ul>
+                        <li><a href="privacidad.html">Política de Privacidad</a></li>
+                        <li><a href="terminos.html">Términos de Servicio</a></li>
+                        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <div id="chatbot-wrapper"></div>
+    <div id="notification" class="notification"></div>
+
+    <script src="scripts/chatbot.js"></script>
+    <script src="scripts/login.js" defer></script>
+</body>
+</html>
+
