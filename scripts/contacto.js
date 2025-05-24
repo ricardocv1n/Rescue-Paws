@@ -1,3 +1,5 @@
+// scripts/contacto.js
+
 document.addEventListener('DOMContentLoaded', function() {
     // Elementos del DOM
     const elements = {
@@ -12,10 +14,14 @@ document.addEventListener('DOMContentLoaded', function() {
         backToTopBtn: document.querySelector('.back-to-top-btn') // Botón volver arriba
     };
 
-    // Función para mostrar notificaciones
+    /**
+     * Función para mostrar notificaciones (reemplaza alert/confirm)
+     * @param {string} message - El mensaje a mostrar.
+     * @param {string} type - Tipo de notificación ('info', 'success', 'error').
+     */
     function showNotification(message, type = 'info') {
         if (!elements.notification) {
-            console.error('Elemento de notificación no encontrado.');
+            console.error('Elemento de notificación no encontrado. Asegúrate de tener <div id="app-notification"></div> en tu HTML.');
             return;
         }
         elements.notification.textContent = message;
@@ -25,7 +31,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000); // Ocultar después de 3 segundos
     }
 
-    // Función para validar un campo individual
+    /**
+     * Función para validar un campo individual del formulario.
+     * @param {HTMLElement} field - El elemento input/textarea/select a validar.
+     * @returns {boolean} True si el campo es válido, false en caso contrario.
+     */
     function validateField(field) {
         let isValid = true;
         let errorMessage = '';
@@ -54,9 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
-    // Configurar event listeners
+    /**
+     * Configura todos los event listeners para los elementos interactivos de la página.
+     */
     function setupEventListeners() {
-        // Menú móvil
+        // Menú móvil (si existe)
         if (elements.mobileMenuBtn && elements.mainNav) {
             elements.mobileMenuBtn.addEventListener('click', function() {
                 const isExpanded = this.getAttribute('aria-expanded') === 'true';
@@ -93,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!validateField(elements.messageInput)) formIsValid = false;
 
                 if (formIsValid) {
-                    // Simular envío exitoso (en un entorno real, aquí harías un fetch/AJAX)
+                    // Simular envío exitoso (en un entorno real, aquí harías un fetch/AJAX a un backend)
                     console.log('Formulario enviado:', {
                         name: elements.nameInput.value,
                         email: elements.emailInput.value,
@@ -143,7 +155,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Animaciones al hacer scroll (ejemplo, puedes adaptar las clases CSS)
+    /**
+     * Controla las animaciones de las secciones al hacer scroll.
+     */
     const animateOnScroll = () => {
         const sections = document.querySelectorAll('.contact-hero, .contact-grid, .map-section, .faq-section');
         
@@ -151,21 +165,21 @@ document.addEventListener('DOMContentLoaded', function() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-in'); // Añadir clase para animación
-                    observer.unobserve(entry.target);
+                    observer.unobserve(entry.target); // Dejar de observar una vez que se anima
                 }
             });
         }, {
             threshold: 0.1, // Elemento visible en un 10%
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -50px 0px' // Margen para activar antes de que el elemento esté completamente visible
         });
 
         sections.forEach(section => {
-            section.classList.add('animate-on-scroll'); // Clase base para la animación
+            section.classList.add('animate-on-scroll'); // Clase base para la animación (opcional, si tienes estilos base)
             observer.observe(section);
         });
     };
 
-    // Inicializar la página
+    // Inicializar la página cuando el DOM esté completamente cargado
     setupEventListeners();
     animateOnScroll();
 });
