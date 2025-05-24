@@ -356,7 +356,7 @@ img {
 .contact-form textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid var(--gray-medium);
+    border: 1px solid var(--gray-300); /* Usar variable para gris medio */
     border-radius: var(--radius-sm);
     font-family: var(--font-primary);
     font-size: var(--font-size-base);
@@ -405,7 +405,7 @@ img {
 
 .form-note {
     font-size: var(--font-size-sm);
-    color: var(--gray-dark);
+    color: var(--gray-700); /* Usar una variable para gris oscuro */
     margin-top: 15px;
 }
 
@@ -478,7 +478,7 @@ img {
 
 .contact-card p {
     font-size: var(--font-size-base);
-    color: var(--gray-dark);
+    color: var(--gray-700); /* Usar variable para gris oscuro */
     margin-bottom: 5px;
 }
 
@@ -517,7 +517,7 @@ img {
 
 .social-links .social-link {
     font-size: 1.8rem;
-    color: var(--gray-dark);
+    color: var(--gray-700); /* Usar variable para gris oscuro */
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -697,7 +697,7 @@ img {
 
 .footer-section p,
 .footer-section ul {
-    color: var(--gray-medium);
+    color: var(--gray-500); /* Usar variable para gris medio */
     line-height: 1.8;
 }
 
@@ -707,7 +707,7 @@ img {
 }
 
 .footer-section ul li a {
-    color: var(--gray-medium);
+    color: var(--gray-500); /* Usar variable para gris medio */
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -748,11 +748,11 @@ img {
 }
 
 .footer-bottom p {
-    color: var(--gray-medium);
+    color: var(--gray-500); /* Usar variable para gris medio */
 }
 
 .footer-bottom .footer-links a {
-    color: var(--gray-medium);
+    color: var(--gray-500); /* Usar variable para gris medio */
     text-decoration: none;
     margin: 0 10px;
     transition: color 0.3s ease;
@@ -849,7 +849,7 @@ img {
 }
 
 .modal-close-button {
-    color: var(--gray-dark);
+    color: var(--gray-700); /* Usar variable para gris oscuro */
     font-size: 28px;
     font-weight: bold;
     position: absolute;
@@ -885,13 +885,13 @@ img {
 
 .modal-body {
     font-size: 1rem;
-    color: var(--gray-dark);
+    color: var(--gray-700); /* Usar variable para gris oscuro */
     line-height: 1.5;
     margin-bottom: 20px;
 }
 
 .next-steps {
-    background-color: var(--gray-light);
+    background-color: var(--gray-100); /* Usar variable para gris muy claro */
     padding: 15px;
     border-radius: 8px;
     text-align: left;
@@ -913,7 +913,7 @@ img {
     display: flex;
     align-items: center;
     margin-bottom: 8px;
-    color: var(--gray-dark);
+    color: var(--gray-700); /* Usar variable para gris oscuro */
 }
 
 .next-steps li i {
@@ -951,7 +951,7 @@ img {
 }
 
 .btn-modal-secondary {
-    background-color: var(--gray-medium);
+    background-color: var(--gray-500); /* Usar variable para gris medio */
     color: var(--dark-color);
 }
 
@@ -971,7 +971,7 @@ img {
         left: 0;
         background-color: white;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-        border-top: 1px solid var(--gray-medium);
+        border-top: 1px solid var(--gray-300); /* Usar variable para gris medio */
     }
 
     .main-nav.active {
@@ -1093,7 +1093,7 @@ img {
         padding: 10px 15px;
         height: auto;
         transform: none;
-        border: 2px solid var(--gray-medium); /* Borde claro para los pasos inactivos */
+        border: 2px solid var(--gray-500); /* Usar variable para gris medio */
         cursor: pointer;
     }
 
