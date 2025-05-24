@@ -56,16 +56,6 @@ Este proyecto está diseñado para ser desplegado fácilmente usando GitHub Page
 * **Imágenes y Contenido:** Reemplaza las imágenes de marcador de posición y el texto de ejemplo con el contenido real de tu organización y las mascotas.
 * **Rutas CSS/JS:** Si cambias la estructura de carpetas, actualiza las rutas en tus archivos HTML (`<link href="..."` y `<script src="..."`) para que apunten correctamente a los archivos CSS y JavaScript.
 
-## 🤝 Contribuciones
-
-¡Las contribuciones son bienvenidas! Si deseas mejorar este proyecto, siéntete libre de:
-
-1.  Hacer un "fork" de este repositorio.
-2.  Crear una nueva rama (`git checkout -b feature/nueva-caracteristica`).
-3.  Realizar tus cambios.
-4.  Realizar un "commit" de tus cambios (`git commit -m 'feat: Añade nueva característica X'`).
-5.  Hacer "push" a tu rama (`git push origin feature/nueva-caracteristica`).
-6.  Abrir un "Pull Request".
 
 ## 📜 Licencia
 
