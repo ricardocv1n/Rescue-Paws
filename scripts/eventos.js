@@ -1,27 +1,53 @@
+// scripts/eventos.js
+
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const mainNav = document.querySelector('.main-nav');
 
-    mobileMenuBtn.addEventListener('click', function() {
-        mainNav.classList.toggle('active');
-        this.innerHTML = mainNav.classList.contains('active') ?
-            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-    });
+    // Asegurarse de que los elementos existen antes de añadir listeners
+    if (mobileMenuBtn && mainNav) {
+        mobileMenuBtn.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            mainNav.classList.toggle('active');
+            // Cambiar el ícono del botón de menú móvil
+            this.innerHTML = mainNav.classList.contains('active') ?
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : ''; // Evita el scroll del body
+        });
 
-    // Cargar eventos
+        // Cerrar menú móvil al hacer clic en un enlace de navegación
+        document.querySelectorAll('.nav-list .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>'; // Restaurar ícono de barras
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    }
+
+    // Cargar eventos al inicio
     loadEvents();
 
+    /**
+     * Carga y muestra los eventos principales.
+     */
     function loadEvents() {
         const eventsContainer = document.getElementById('events-container');
 
         // Mostrar spinner de carga
-        eventsContainer.innerHTML = `
-            <div class="loading-spinner">
-                <div class="spinner"></div>
-                <p>Cargando eventos...</p>
-            </div>
-        `;
+        if (eventsContainer) {
+            eventsContainer.innerHTML = `
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Cargando eventos...</p>
+                </div>
+            `;
+        }
 
         // Simular carga de API con setTimeout
         setTimeout(() => {
@@ -90,14 +116,20 @@ document.addEventListener('DOMContentLoaded', function() {
             ];
 
             displayEvents(eventsData);
-            setupEventFilters();
+            setupEventFilters(eventsData); // Pasar eventsData a setupEventFilters
             loadPastEvents();
         }, 1500);
     }
 
+    /**
+     * Muestra los eventos en el contenedor principal.
+     * @param {Array<Object>} events - Array de objetos de eventos a mostrar.
+     */
     function displayEvents(events) {
         const eventsContainer = document.getElementById('events-container');
-        eventsContainer.innerHTML = '';
+        if (!eventsContainer) return; // Salir si el contenedor no existe
+
+        eventsContainer.innerHTML = ''; // Limpiar contenido previo
 
         if (events.length === 0) {
             eventsContainer.innerHTML = `
@@ -114,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
             eventCard.className = `event-card ${event.type}-event`;
             eventCard.innerHTML = `
                 <div class="event-image">
-                    <img src="${event.imageUrl}" alt="${event.title}">
+                    <img src="${event.imageUrl}" alt="${event.title}" loading="lazy">
                 </div>
                 <div class="event-details">
                     <span class="event-date">${event.date}</span>
@@ -127,14 +159,18 @@ document.addEventListener('DOMContentLoaded', function() {
                             <i class="fas fa-map-marker-alt"></i> ${event.location}
                         </span>
                     </div>
-                    <a href="detalle_evento.html?id=${event.id}" class="event-link">Más información</a>
-                </div>
+                    <a href="Detalle_Evento.html" class="event-link">Más información</a>
+                    </div>
             `;
             eventsContainer.appendChild(eventCard);
         });
     }
 
-    function setupEventFilters() {
+    /**
+     * Configura los filtros de eventos.
+     * @param {Array<Object>} allEvents - Todos los datos de eventos para filtrar.
+     */
+    function setupEventFilters(allEvents) {
         const filterButtons = document.querySelectorAll('.filter-btn');
         const eventsContainer = document.getElementById('events-container');
 
@@ -145,37 +181,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.classList.add('active');
 
                 const filterValue = button.dataset.filter;
-                const eventCards = document.querySelectorAll('.event-card');
-
-                eventCards.forEach(card => {
-                    if (filterValue === 'all') {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = card.classList.contains(`${filterValue}-event`) ?
-                            'block' : 'none';
-                    }
-                });
+                const filteredEvents = allEvents.filter(event => 
+                    filterValue === 'all' || event.type === filterValue
+                );
+                
+                // Mostrar eventos filtrados
+                displayEvents(filteredEvents);
 
                 // Si no hay eventos para el filtro, mostrar el mensaje de "no hay eventos"
-                const visibleCards = Array.from(eventCards).filter(card => card.style.display === 'block');
-                if (visibleCards.length === 0) {
+                if (filteredEvents.length === 0) {
                     eventsContainer.innerHTML = `
                         <div class="no-events" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
                             <h3>No hay eventos en la categoría "${filterValue}"</h3>
                             <p>Por favor intenta con otra categoría o revisa todos los eventos.</p>
                         </div>
                     `;
-                } else if (eventsContainer.querySelector('.no-events')) {
-                    // Si había un mensaje de "no hay eventos", recargar los eventos
-                    loadEvents(); // Esto volverá a mostrar todos los eventos y luego se aplicará el filtro
                 }
             });
         });
     }
 
-    // Cargar eventos pasados
+    /**
+     * Carga y muestra los eventos pasados.
+     */
     function loadPastEvents() {
         const pastEventsGallery = document.getElementById('past-events-gallery');
+        if (!pastEventsGallery) return;
 
         // Datos de eventos pasados con URLs fijas
         const pastEvents = [
@@ -215,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const eventItem = document.createElement('div');
             eventItem.className = 'past-event-item';
             eventItem.innerHTML = `
-                <img src="${event.imageUrl}" alt="${event.title}">
+                <img src="${event.imageUrl}" alt="${event.title}" loading="lazy">
                 <div class="past-event-overlay">
                     <h4 class="past-event-title">${event.title}</h4>
                 </div>
@@ -246,13 +277,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     imageUrl: "https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80"
                 }
             ];
-        
             
             morePastEvents.forEach(event => {
                 const eventItem = document.createElement('div');
                 eventItem.className = 'past-event-item';
                 eventItem.innerHTML = `
-                    <img src="${event.imageUrl}" alt="${event.title}">
+                    <img src="${event.imageUrl}" alt="${event.title}" loading="lazy">
                     <div class="past-event-overlay">
                         <h4 class="past-event-title">${event.title}</h4>
                     </div>
